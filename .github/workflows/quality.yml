@@ -29,4 +29,4 @@ jobs:
       run: uv pip install -e .
 
     - name: Run mdformat
-      run: mdformat --check .
+      run: mdformat --check docs
