@@ -5,16 +5,19 @@ This guide introduces static typing in Python, covering its benefits, usage, and
 ## Why Use Typing?
 
 1. **Improved Code Readability**
-    - Type hints serve as documentation, clarifying the expected data types.
-    - Makes code easier to understand and maintain.
 
-2. **Early Error Detection**
-    - Type checkers like MyPy can identify type-related errors before runtime.
-    - Reduces the likelihood of unexpected behavior in production.
+   - Type hints serve as documentation, clarifying the expected data types.
+   - Makes code easier to understand and maintain.
 
-3. **Enhanced Code Maintainability**
-    - Facilitates refactoring and code evolution.
-    - Provides a safety net when making changes to existing code.
+1. **Early Error Detection**
+
+   - Type checkers like MyPy can identify type-related errors before runtime.
+   - Reduces the likelihood of unexpected behavior in production.
+
+1. **Enhanced Code Maintainability**
+
+   - Facilitates refactoring and code evolution.
+   - Provides a safety net when making changes to existing code.
 
 ## What to Type
 
@@ -37,7 +40,7 @@ name: str = "Alice"
 
 ### 3. Data Structures
 
-Type hints can also be used to define complex data structures.  For better organization and maintainability, it's best practice to define these types in a separate file (e.g., `utils/type_definitions.py`). This keeps your type definitions centralized and reusable across your project.
+Type hints can also be used to define complex data structures. For better organization and maintainability, it's best practice to define these types in a separate file (e.g., `utils/type_definitions.py`). This keeps your type definitions centralized and reusable across your project.
 
 For example:
 
@@ -60,10 +63,9 @@ bond: BondType = (1, 2)
 bonds: BondsType = [(1, 2), (2, 3), (3, 1)]
 atom: AtomType = ("H", 1.0, 2.0, 3.0)
 atoms: AtomsType = [("H", 1.0, 2.0, 3.0), ("O", 1.5, 2.5, 3.5)]
-
 ```
 
-This approach improves code readability and maintainability, especially in larger projects.  Using `TypeAlias` provides clarity and allows for better type checking.
+This approach improves code readability and maintainability, especially in larger projects. Using `TypeAlias` provides clarity and allows for better type checking.
 
 ### 4. Class Attributes
 
@@ -89,14 +91,18 @@ class Circle:
 
 ### 3. Union Types
 
-The `Union` type hint, from the `typing` module, specifies that a variable can accept one of several types.  While `Union` remains functional, modern Python style prefers the pipe operator (`|`) for expressing union types.  This is generally considered more concise and readable.
+The `Union` type hint, from the `typing` module, specifies that a variable can accept one of several types. While `Union` remains functional, modern Python style prefers the pipe operator (`|`) for expressing union types. This is generally considered more concise and readable.
 
 ```python
-from typing import Union  # Union is still useful for backward compatibility and in some contexts
+from typing import (
+    Union,
+)  # Union is still useful for backward compatibility and in some contexts
+
 
 def process_data(data: int | float | str) -> None:
     """Processes data that can be an int, float, or string."""
     print(f"Processing: {data}")
+
 
 def process_data_union(data: Union[int, float, str]) -> None:
     """Processes data that can be an int, float, or string using Union."""
@@ -107,12 +113,14 @@ def process_data_union(data: Union[int, float, str]) -> None:
 
 ```python
 from typing import Optional
+
+
 def greet(name: Optional[str] = None) -> None:
-"""Greets the user, optionally by name."""
-if name:
-    print(f"Hello, {name}!")
-else:
-    print("Hello!")
+    """Greets the user, optionally by name."""
+    if name:
+        print(f"Hello, {name}!")
+    else:
+        print("Hello!")
 ```
 
 ### 5. Callable Types
@@ -122,12 +130,15 @@ Callable type hints describe functions. The syntax `Callable[[arg1_type, arg2_ty
 ```python
 from typing import Callable
 
+
 def apply_function(func: Callable[[int], int], value: int) -> int:
     """Applies a function to a value."""
     return func(value)
 
+
 def square(x: int) -> int:
     return x * x
+
 
 result = apply_function(square, 5)
 ```
@@ -137,33 +148,32 @@ result = apply_function(square, 5)
 Type aliases provide a way to give a more descriptive name to an existing type. This improves code readability and maintainability, especially when dealing with complex types.
 
 ```python
-
 # Define a type alias for a list of floats representing a vector
-Vector: list[float] 
+Vector: list[float]
+
 
 def scale_vector(vector: Vector, scalar: float) -> Vector:
     """Scales a vector by a scalar."""
-    return [scalar * x for x in vector] # Corrected the multiplication operator
-
+    return [scalar * x for x in vector]  # Corrected the multiplication operator
 ```
 
 ### 7. Generics
 
-Generics allow you to write functions and data structures that can work with different types without losing type information.  The `TypeVar` class from the `typing` module is used to define type variables.
+Generics allow you to write functions and data structures that can work with different types without losing type information. The `TypeVar` class from the `typing` module is used to define type variables.
 
 ```python
 from typing import TypeVar, Optional
 
 # Define a type variable T
-T = TypeVar('T')
+T = TypeVar("T")
+
 
 def first_element(data: list[T]) -> Optional[T]:
     """Returns the first element of a list.  Returns None if the list is empty."""
-    if data: # Added check for empty list
+    if data:  # Added check for empty list
         return data[0]
     else:
-        return None # Handle empty list case
-
+        return None  # Handle empty list case
 ```
 
 ## Tools and Techniques
@@ -187,32 +197,39 @@ def first_element(data: list[T]) -> Optional[T]:
 ## Best Practices
 
 1. **Be Consistent**
-    - Follow a consistent style for type hints
-    - Use a linter to enforce consistency
 
-2. **Type Function Signatures**
-    - Always type function arguments and return values
-    - Improves code clarity and reduces errors
+   - Follow a consistent style for type hints
+   - Use a linter to enforce consistency
 
-3. **Use Descriptive Names**
-    - Use meaningful names for type variables and aliases
-    - Enhances code readability
+1. **Type Function Signatures**
 
-4. **Keep Type Hints Up-to-Date**
-    - Update type hints when the code changes
-    - Ensures that the type hints remain accurate
+   - Always type function arguments and return values
+   - Improves code clarity and reduces errors
+
+1. **Use Descriptive Names**
+
+   - Use meaningful names for type variables and aliases
+   - Enhances code readability
+
+1. **Keep Type Hints Up-to-Date**
+
+   - Update type hints when the code changes
+   - Ensures that the type hints remain accurate
 
 ## Common Pitfalls
 
 1. **Overuse of `Any`**
+
    - Avoid using `Any` unless absolutely necessary
    - Reduces the benefits of static typing
 
-2. **Ignoring Type Errors**
+1. **Ignoring Type Errors**
+
    - Treat type errors as serious issues
    - Fix them promptly to prevent runtime errors
 
-3. **Complex Type Hierarchies**
+1. **Complex Type Hierarchies**
+
    - Keep type hierarchies simple and understandable
    - Avoid over-engineering type definitions
 
@@ -221,17 +238,20 @@ def first_element(data: list[T]) -> Optional[T]:
 While typing is generally beneficial, some cases might not require it:
 
 1. **Small Scripts**
-    - Simple scripts with limited functionality
-    - Where the benefits of typing are minimal
 
-2. **Prototyping**
-    - Early-stage prototyping where code is rapidly changing
-    - Typing can add overhead without significant benefit
+   - Simple scripts with limited functionality
+   - Where the benefits of typing are minimal
 
-3. **Legacy Code**
-    - Codebases where adding type hints is impractical
-    - Due to the size or complexity of the code
-    - For example, integrating type hints into a large, established project like RDKit might require significant refactoring and could be a substantial undertaking.  Prioritize adding types to new code or critical sections of legacy code (perhaps by type stubs) rather than attempting a complete overhaul.
+1. **Prototyping**
+
+   - Early-stage prototyping where code is rapidly changing
+   - Typing can add overhead without significant benefit
+
+1. **Legacy Code**
+
+   - Codebases where adding type hints is impractical
+   - Due to the size or complexity of the code
+   - For example, integrating type hints into a large, established project like RDKit might require significant refactoring and could be a substantial undertaking. Prioritize adding types to new code or critical sections of legacy code (perhaps by type stubs) rather than attempting a complete overhaul.
 
 ## Conclusion
 
