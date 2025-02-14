@@ -1,0 +1,82 @@
+name: Release Drafter
+
+on:
+  push:
+    branches:
+      - main
+      - master
+  pull_request:
+    types: [opened, reopened, synchronize]
+    branches:
+      - main
+      - master
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pull-requests: write
+
+jobs:
+  process_pr:
+    permissions:
+      contents: write
+      pull-requests: write
+    runs-on: ubuntu-latest
+    steps:
+      - name: Assign labels from commits
+        if: github.event_name == 'pull_request'
+        id: assign-labels
+        uses: mauroalderete/action-assign-labels@v1
+        with:
+          pull-request-number: ${{ github.event.pull_request.number }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          conventional-commits: |
+            conventional-commits:
+              # Core Science
+              - type: 'quantum'
+                nouns: ['QUANTUM', 'Quantum', 'quantum', 'QM', 'qm']
+                labels: ['quantum-mechanics']
+              - type: 'qc'
+                nouns: ['QC', 'qc', "qcomp", "QCOMP"]
+                labels: ['quantum-computing']
+              - type: 'qd'
+                nouns: ['QD', 'qd', 'DYNAMICS', 'Dynamics', 'dynamics']
+                labels: ['quantum-dynamics']
+              - type: 'md'
+                nouns: ['MD', 'md', 'MOLECULAR-DYNAMICS']
+                labels: ['molecular-dynamics']
+              - type: 'ai'
+                nouns: ['AI', 'ML', 'ai', 'ml', 'AI/ML']
+                labels: ['ai-ml']
+              
+              # Programming & Tools
+              - type: 'git'
+                nouns: ['GIT', 'Git', 'git']
+                labels: ['git']
+              - type: 'python'
+                nouns: ['PYTHON', 'Python', 'python', 'PY', 'py']
+                labels: ['python']
+              
+              # Educational
+              - type: 'tutorial'
+                nouns: ['TUTORIAL', 'Tutorial', 'tutorial']
+                labels: ['tutorials']
+              - type: 'lecture'
+                nouns: ['LECTURE', 'Lecture', 'lecture']
+                labels: ['lectures']
+              
+              # Publications
+              - type: 'pub'
+                nouns: ['PUB', 'Pub', 'pub', 'PUBLICATION', 'Publication']
+                labels: ['publications']
+              
+              # Maintenance
+              - type: 'maint'
+                nouns: ['MAINT', 'Maint', 'maint', 'MAINTENANCE', 'FIX', 'fix']
+                labels: ['maintenance']
+          maintain-labels-not-matched: false
+          apply-changes: true
+
+      - uses: release-drafter/release-drafter@v6.0.0
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

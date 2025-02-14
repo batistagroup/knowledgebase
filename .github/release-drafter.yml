@@ -1,0 +1,48 @@
+name-template: "v$RESOLVED_VERSION 📚"
+tag-template: "v$RESOLVED_VERSION"
+categories:
+  - title: "⚛️ Core Science"
+    labels:
+      - "quantum-mechanics"
+      - "quantum-computing"
+      - "quantum-dynamics"
+      - "molecular-dynamics"
+      - "ai-ml"
+  - title: "💻 Programming & Tools"
+    labels:
+      - "git"
+      - "python"
+  - title: "📖 Educational"
+    labels:
+      - "tutorials"
+      - "lectures"
+  - title: "📑 Publications"
+    labels:
+      - "publications"
+  - title: "🛠️ Maintenance"
+    labels:
+      - "maintenance"
+change-template: "- $TITLE @$AUTHOR (#$NUMBER)"
+change-title-escapes: '\<*_&'
+version-resolver:
+  major:
+    labels:
+      - "major"
+  minor:
+    labels:
+      - "quantum-mechanics"
+      - "quantum-computing"
+      - "quantum-dynamics"
+      - "molecular-dynamics"
+      - "computational-chemistry"
+      - "tutorials"
+      - "lectures"
+      - "publications"
+  patch:
+    labels:
+      - "maintenance"
+  default: patch
+template: |
+  ## Knowledgebase Updates
+
+  $CHANGES
