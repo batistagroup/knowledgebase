@@ -4,19 +4,41 @@ This document describes the labels used in our knowledgebase repository and thei
 
 ## Labels
 
-| Category     | Label                | Commit Prefix     |
-| :----------- | :------------------- | :---------------- |
-| Core Science | `quantum-mechanics`  | `quantum:`, `qm:` |
-|              | `quantum-computing`  | `qc:`             |
-|              | `quantum-dynamics`   | `qd:`             |
-|              | `molecular-dynamics` | `md:`             |
-|              | `ai-ml`              | `ai:`, `ml:`      |
-| Programming  | `git`                | `git:`            |
-|              | `python`             | `python:`, `py:`  |
-| Educational  | `tutorials`          | `tutorial:`       |
-|              | `lectures`           | `lecture:`        |
-| Publications | `publications`       | `pub:`            |
-| Maintenance  | `maintenance`        | `maint:`          |
+### Core Science
+
+| Label                | Commit Prefix(es) |
+| -------------------- | ----------------- |
+| `quantum-mechanics`  | `quantum:`, `qm:` |
+| `quantum-computing`  | `qc:`             |
+| `quantum-dynamics`   | `qd:`             |
+| `molecular-dynamics` | `md:`             |
+| `ai-ml`              | `ai:`, `ml:`      |
+
+### Programming
+
+| Label    | Commit Prefix(es) |
+| -------- | ----------------- |
+| `git`    | `git:`            |
+| `python` | `python:`, `py:`  |
+
+### Educational
+
+| Label       | Commit Prefix(es) |
+| ----------- | ----------------- |
+| `tutorials` | `tutorial:`       |
+| `lectures`  | `lecture:`        |
+
+### Publications
+
+| Label          | Commit Prefix(es) |
+| -------------- | ----------------- |
+| `publications` | `pub:`            |
+
+### Maintenance
+
+| Label         | Commit Prefix(es) |
+| ------------- | ----------------- |
+| `maintenance` | `maint:`          |
 
 ## Version Impact
 
