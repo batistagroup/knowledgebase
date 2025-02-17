@@ -1,4 +1,4 @@
-# Testing Scientific Code with Pytest
+# Introduction
 
 This guide introduces best practices for testing scientific Python code using the `pytest` framework. We'll cover various testing strategies, focusing on writing clear, concise, and maintainable tests.
 

@@ -1,4 +1,4 @@
-# Python Typing
+# Introduction
 
 This guide introduces static typing in Python, covering its benefits, usage, and best practices.
 
