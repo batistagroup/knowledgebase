@@ -5,9 +5,10 @@
 This guide provides a modern, efficient approach to Python project management using `uv`, a high-performance replacement for traditional tools like pip, pyenv, and poetry. It's designed for Python developers who want to streamline their development workflow and adopt current best practices for dependency management.
 
 !!! info "Prerequisites"
-\- Basic familiarity with Python and command line
-\- Basic understanding of virtual environments and package management
-\- macOS, Linux, or Windows system
+
+    - Basic familiarity with Python and command line
+    - Basic understanding of virtual environments and package management
+    - macOS, Linux, or Windows system
 
 ## Choosing uv as a package manager
 
@@ -100,7 +101,8 @@ package-dir = { "" = "src" }
 ```
 
 !!! warning "Don't forget to activate your venv"
-Once you have your project set up, your venv should be pretty much always activated. Your IDE (VSCode, Cursor) should automatically recognize presence of `.venv` folder and activate it in the terminal sessions. But if you open your repository in a standalone terminal window, you'll have to manually `source .venv/bin/activate`.
+
+    Once you have your project set up, your venv should be pretty much always activated. Your IDE (VSCode, Cursor) should automatically recognize presence of `.venv` folder and activate it in the terminal sessions. But if you open your repository in a standalone terminal window, you'll have to manually `source .venv/bin/activate`.
 
 After this, you can install your package in development mode `uv pip install -e .`. The `-e` specifies dev mode and effectively it means that any changes made to the source code in `src/my_package` will be immediately available (i.e. you don't need to reinstall your package).
 
@@ -132,7 +134,8 @@ In some sense, `uv.lock` is similar to what you'd get from `pip freeze`. Why do 
 See [uv locking and syncing page](https://docs.astral.sh/uv/concepts/projects/sync/#exporting-the-lockfile) for more details.
 
 !!! tip "uv.lock gives you confidence that your code will always work"
-Basically, once you have a working codebase, even if you stop working on it, you (or any other human) can come back to it at any point in the future, and he'll be able to run it without any issues. Your code will work even if numpy updated 10 times in the meantime or some other package stopped being maintained. Fun fact: lock files have been a standard in web dev for almost 15 years, you might be familiar with `package-lock.json` and `yarn.lock`.
+
+    Basically, once you have a working codebase, even if you stop working on it, you (or any other human) can come back to it at any point in the future, and he'll be able to run it without any issues. Your code will work even if numpy updated 10 times in the meantime or some other package stopped being maintained. Fun fact: lock files have been a standard in web dev for almost 15 years, you might be familiar with `package-lock.json` and `yarn.lock`.
 
 #### Dependency Groups
 
@@ -171,21 +174,21 @@ If you're currently using pip with venv, migration is straightforward:
 
 1. For existing projects:
 
-   ```bash
-   # In your project directory
-   uv pip freeze > requirements.txt  # Export current dependencies
-   deactivate  # Exit current venv
-   rm -rf venv/  # Remove old venv
-   uv venv  # Create new venv
-   source .venv/bin/activate
-   uv pip install -r requirements.txt  # Install dependencies
-   ```
+    ```bash
+    # In your project directory
+    uv pip freeze > requirements.txt  # Export current dependencies
+    deactivate  # Exit current venv
+    rm -rf venv/  # Remove old venv
+    uv venv  # Create new venv
+    source .venv/bin/activate
+    uv pip install -r requirements.txt  # Install dependencies
+    ```
 
 1. Convert to modern structure:
 
-   - Create `pyproject.toml` using `uv init`
-   - Move dependencies from `requirements.txt` to `pyproject.toml`
-   - Run `uv pip install -e .` to install in editable mode
+    - Create `pyproject.toml` using `uv init`
+    - Move dependencies from `requirements.txt` to `pyproject.toml`
+    - Run `uv pip install -e .` to install in editable mode
 
 ### From conda
 
@@ -193,18 +196,18 @@ For conda users, the transition requires a few additional steps:
 
 1. Export your conda environment:
 
-   ```bash
-   conda list --explicit > conda-packages.txt
-   ```
+    ```bash
+    conda list --explicit > conda-packages.txt
+    ```
 
 1. Identify pure Python packages from conda-packages.txt
 
 1. Create new project with uv:
 
-   ```bash
-   uv venv
-   source .venv/bin/activate
-   ```
+    ```bash
+    uv venv
+    source .venv/bin/activate
+    ```
 
 1. Install required packages using `uv add`
 
