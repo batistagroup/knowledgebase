@@ -9,6 +9,7 @@ extra_css:
 
 plugins:
 - search
+- awesome-nav
 
 markdown_extensions:
   - pymdownx.highlight:
