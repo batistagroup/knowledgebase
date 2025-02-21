@@ -1,7 +1,5 @@
 # Pre-commit Workflows
 
-## Pre-commit Hooks
-
 After reading docs on [linting & formatting](/docs/python/lint.md) and [typing](/docs/python/typing/intro.md), your [committing](/docs/git/intro.md) workflow will look like:
 
 ```bash

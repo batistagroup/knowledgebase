@@ -1,0 +1,4 @@
+nav:
+  - intro.md
+  - pre-commit.md
+  - github-workflows.md
