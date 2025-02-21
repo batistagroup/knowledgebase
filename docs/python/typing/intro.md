@@ -1,258 +1,306 @@
-# Introduction
+# Introduction to Python Type Hints
 
-This guide introduces static typing in Python, covering its benefits, usage, and best practices.
+## Overview
 
-## Why Use Typing?
-
-1. **Improved Code Readability**
-
-   - Type hints serve as documentation, clarifying the expected data types.
-   - Makes code easier to understand and maintain.
-
-1. **Early Error Detection**
-
-   - Type checkers like MyPy can identify type-related errors before runtime.
-   - Reduces the likelihood of unexpected behavior in production.
-
-1. **Enhanced Code Maintainability**
-
-   - Facilitates refactoring and code evolution.
-   - Provides a safety net when making changes to existing code.
-
-## What to Type
-
-### 1. Function Signatures
-
-Type hints specify the expected types of function arguments and the return value.
+Consider the following code block.
 
 ```python
-def add(x: int, y: int) -> int:
-    """Adds two integers and returns the result."""
-    return x + y
+def process_smiles(smiles):
+    # a lot of lines of code
+    ...
 ```
 
-### 2. Variable Annotations
+You probably can infer that this function expects SMILES and performs some operations on them. But does it take one SMILES string or does it take a list of those strings? Or can it take both? Compare this to:
+
+```py
+def process_smiles_v1(smiles:str) -> float:
+    ...
+# or 
+def process_smiles_v2(smiles:list[str]) -> list[int]:
+    ...
+```
+
+although same information could be stored in a docstring, a type annotation is like a shortcut. As a side bonus, if you try to write:
+
+```py
+process_smiles_v2("CCO")
+```
+
+a type checker will throw an error which will allow you to catch this bug even before you run the code.
+
+!!! tip "Extra benefits of typing"
+
+    Besides catching errors early and improving readability of your code, a huge benefit of type hints is that it improves your experience with LLMs. Higher quality codebases tend to have type annotations, so if your existing code has the type hints, it'll direct LLM into the portion of the latent space that corresponds to higher code quality (just like a math problem written with LaTeX symbols has a higher chance of getting correct result).
+
+!!! info Prerequisites
+
+    - Python 3.9+
+    - Basic Python knowledge
+    - A type checker (mypy, pytype, or Pyright). I tend to use mypy
+
+## Basic Usage
+
+### 1. Simple Type Annotations
+
+Type annotations are optional when the type can be inferred from the initial value.
 
 ```python
-pi: float = 3.14159
-name: str = "Alice"
+name = "Alice"  # Type inferred as str
+age = 25  # Type inferred as int
+is_active = True  # Type inferred as bool
 ```
 
-### 3. Data Structures
+However, explicit annotations are recommended for empty collections or when type is ambiguous
 
-Type hints can also be used to define complex data structures. For better organization and maintainability, it's best practice to define these types in a separate file (e.g., `utils/type_definitions.py`). This keeps your type definitions centralized and reusable across your project.
+```py
+users: list[str] = [] # list of strings
+cache: dict[str, int] = {} # dict mapping str keys to int vals
+numbers: list[float | int] = []    
 
-For example:
+# Function annotations are always recommended for clarity
+def greet(name: str) -> str:
+    return f"Hello, {name}!"
+
+def multiply(x: int, y: int) -> int:
+    return x * y
+```
+
+### 2. Built-in Collections
 
 ```python
-# utils/type_definitions.py
-from typing import TypeAlias
+# Lists
+numbers: list[int] = [1, 2, 3]
 
-BondType: TypeAlias = tuple[int, int]
-BondsType: TypeAlias = list[BondType]
-AtomType: TypeAlias = tuple[str, float, float, float]
-AtomsType: TypeAlias = list[AtomType]
+
+def get_users() -> list[str]:
+    return ["Alice", "Bob", "Charlie"]
+
+
+# Dictionaries
+scores: dict[str, int] = {"Alice": 95, "Bob": 85}
+
+
+def get_config() -> dict[str, str]:
+    return {"host": "localhost", "port": "8080"}
+
+
+# Sets and Tuples
+valid_codes: set[int] = {200, 201, 204}
+point: tuple[float, float] = (2.0, 3.0)
 ```
 
-Then, you can import and use these types elsewhere:
+### 3. Nullable Types and Default Values
+
+If a variable may have type A or B, a union operator `|` can be used:
 
 ```python
-from utils.type_definitions import BondType, BondsType, AtomType, AtomsType
-
-bond: BondType = (1, 2)
-bonds: BondsType = [(1, 2), (2, 3), (3, 1)]
-atom: AtomType = ("H", 1.0, 2.0, 3.0)
-atoms: AtomsType = [("H", 1.0, 2.0, 3.0), ("O", 1.5, 2.5, 3.5)]
+# Parameters that might be None
+def find_user(user_id: str | None) -> str:
+    if user_id is None:
+        return "Guest"
+    return f"User {user_id}"
 ```
 
-This approach improves code readability and maintainability, especially in larger projects. Using `TypeAlias` provides clarity and allows for better type checking.
+default values can be specified after the type:
 
-### 4. Class Attributes
+```py
+def connect(host: str = "localhost", port: int = 8080) -> bool:
+    return True
+```
+
+!!! info "Old type annotation syntax"
+
+    Before python 3.9, a union of types was shown as `Union[str, None]`. An optional value, e.g. `user_id: str | None = None` was written `user_id: Optional[str] = None` with an import `from typing import Union, Optional`. You might see this syntax in older codebases; the new one is recommended. If you're up for a rabbit hole, python core devs had a [holy war](https://discuss.python.org/t/clarification-for-pep-604-is-foo-int-none-to-replace-all-use-of-foo-optional-int/26945) over this change.
+
+### 4. Multiple Return Types
 
 ```python
-class Circle:
-    radius: float
-    color: str
-    is_filled: bool
+def parse_value(value: str) -> int | float:
+    """Parse a string into either an integer or float."""
+    try:
+        return int(value)
+    except ValueError:
+        return float(value)
+
+
+def fetch_user_data(user_id: int) -> dict[str, str | int] | None:
+    """Fetch user data, returns None if user not found."""
+    if user_id < 0:
+        return None
+    return {"name": "Alice", "age": 25}
 ```
 
-## Typing Concepts
+### 5. Type Aliases
 
-### 1. Basic Types
-
-- `int`, `float`, `str`, `bool`
-- `None` (for `NoneType`)
-- `Any` (for dynamically typed code)
-
-### 2. Collection Types
-
-- `list[T]`, `set[T]`, `tuple[T, ...]`, `dict[K, V]`
-- `List`, `Set`, `Tuple`, `Dict` (lowercase built-in counterparts are now preferred for type hints)
-
-### 3. Union Types
-
-The `Union` type hint, from the `typing` module, specifies that a variable can accept one of several types. While `Union` remains functional, modern Python style prefers the pipe operator (`|`) for expressing union types. This is generally considered more concise and readable.
+Type aliases help manage complex type annotations and make code more readable:
 
 ```python
-from typing import (
-    Union,
-)  # Union is still useful for backward compatibility and in some contexts
+# Type aliases for complex types
+UserId = int
+UserDict = dict[UserId, str]
+JsonValue = str | int | float | bool | None
+JsonObject = dict[str, JsonValue]
 
 
-def process_data(data: int | float | str) -> None:
-    """Processes data that can be an int, float, or string."""
-    print(f"Processing: {data}")
+def process_json(data: JsonObject) -> list[str]:
+    """Process a JSON object and return list of keys with string values."""
+    return [k for k, v in data.items() if isinstance(v, str)]
 
 
-def process_data_union(data: Union[int, float, str]) -> None:
-    """Processes data that can be an int, float, or string using Union."""
-    print(f"Processing (using Union): {data}")
+def get_user_data() -> UserDict:
+    return {1: "Alice", 2: "Bob"}
 ```
 
-### 4. Optional Types
+## Type Checking in Practice
+
+### Static vs Runtime Type Checking
+
+Type hints enable static analysis of your code before execution. This creates two distinct phases of type checking:
+
+1. **Static Analysis** (Before Runtime):
+
+    - Checks type consistency
+    - Validates function signatures
+    - Ensures type-safe operations
+    - No performance impact at runtime
+
+1. **Runtime Behavior** (During Execution):
+
+    - Python's normal dynamic type checking
+    - No overhead from type hints (they're ignored)
+    - Actual type enforcement
+
+Here's how this dual system works:
 
 ```python
-from typing import Optional
+def process_items(items: list[str]) -> dict[str, int]:
+    """Process a list of strings and return their lengths."""
+    return {item: len(item) for item in items}
 
 
-def greet(name: Optional[str] = None) -> None:
-    """Greets the user, optionally by name."""
-    if name:
-        print(f"Hello, {name}!")
-    else:
-        print("Hello!")
+# Static type checker catches these errors:
+process_items([1, 2, 3])  # Error: list[int] is not list[str]
+process_items("not a list")  # Error: str is not list[str]
+
+
+# Runtime errors (not caught by static checker):
+def load_and_process_data(filepath: str) -> dict[str, int]:
+    """Load data from a file and process it.
+
+    The type checker trusts our annotation that the file contains strings,
+    but at runtime, the file might contain any type of data.
+    """
+    with open(filepath) as f:
+        # Type checker assumes this creates List[str] based on annotation
+        items: list[str] = f.read().splitlines()
+        return process_items(items)
+
+
+# These will pass type checking but might fail at runtime:
+load_and_process_data("data.txt")
+# Runtime error if file contains non-string data or if file doesn't exist
 ```
 
-### 5. Callable Types
+The key difference is:
 
-Callable type hints describe functions. The syntax `Callable[[arg1_type, arg2_type,...], return_type]` specifies the argument types and the return type.
+- Static type checking validates code structure and explicit type annotations
+- Runtime checks validate actual data values and operations
+- External data (files, network, user input) can't be verified by the type checker
+
+### Common Type Checking Scenarios
+
+Here are realistic examples of issues that type checkers catch:
 
 ```python
-from typing import Callable
+# Function argument mismatches
+def calculate_average(numbers: list[float]) -> float:
+    return sum(numbers) / len(numbers)
 
 
-def apply_function(func: Callable[[int], int], value: int) -> int:
-    """Applies a function to a value."""
-    return func(value)
+data = ["1", "2", "3"]  # Error: list[str] incompatible with List[float]
+calculate_average(data)
 
 
-def square(x: int) -> int:
-    return x * x
+# Incorrect attribute access
+class User:
+    def __init__(self, name: str):
+        self.name = name
 
 
-result = apply_function(square, 5)
+def print_email(user: User) -> None:
+    print(user.email)  # Error: 'User' has no attribute 'email'
+
+
+# Type narrowing errors
+def process_value(value: str | int) -> str:
+    if isinstance(value, int):
+        return value.upper()  # Error: 'int' has no attribute 'upper'
+    return value.upper()
+
+
+# Container type mismatches
+cache: dict[str, list[int]] = {
+    "numbers": ["1", "2", "3"]  # Error: list[str] incompatible with list[int]
+}
+
+
+# Function return type violations
+def get_user_ids() -> list[int]:
+    users = {"1": "Alice", "2": "Bob"}
+    return list(users.keys())  # Error: list[str] incompatible with list[int]
 ```
-
-### 6. Type Aliases
-
-Type aliases provide a way to give a more descriptive name to an existing type. This improves code readability and maintainability, especially when dealing with complex types.
-
-```python
-# Define a type alias for a list of floats representing a vector
-Vector: list[float]
-
-
-def scale_vector(vector: Vector, scalar: float) -> Vector:
-    """Scales a vector by a scalar."""
-    return [scalar * x for x in vector]  # Corrected the multiplication operator
-```
-
-### 7. Generics
-
-Generics allow you to write functions and data structures that can work with different types without losing type information. The `TypeVar` class from the `typing` module is used to define type variables.
-
-```python
-from typing import TypeVar, Optional
-
-# Define a type variable T
-T = TypeVar("T")
-
-
-def first_element(data: list[T]) -> Optional[T]:
-    """Returns the first element of a list.  Returns None if the list is empty."""
-    if data:  # Added check for empty list
-        return data[0]
-    else:
-        return None  # Handle empty list case
-```
-
-## Tools and Techniques
-
-### 1. MyPy
-
-- Static type checker for Python
-- Integrates with popular IDEs
-- Can be run from the command line
-
-### 2. Type Stubs
-
-- `.pyi` files that provide type hints for existing libraries
-- Used when the original library does not include type hints
-
-### 3. Gradual Typing
-
-- Gradually add type hints to your codebase
-- Start with critical sections and expand over time
 
 ## Best Practices
 
-1. **Be Consistent**
+1. **Always Annotate Public APIs**
 
-   - Follow a consistent style for type hints
-   - Use a linter to enforce consistency
+    - Functions and methods exposed to other modules
+    - Class attributes and properties
+    - Module-level variables
 
-1. **Type Function Signatures**
+1. **Use Type Aliases for Complex Types**
 
-   - Always type function arguments and return values
-   - Improves code clarity and reduces errors
+    ```python
+    from typing import TypeAlias
 
-1. **Use Descriptive Names**
+    JsonDict: TypeAlias = dict[str, str | int | float | bool | None]
+    ```
 
-   - Use meaningful names for type variables and aliases
-   - Enhances code readability
+1. **Handle Optional Types Safely**
 
-1. **Keep Type Hints Up-to-Date**
+    ```python
+    def process_data(data: str | None) -> str:
+        if data is None:
+            return "No data"
+        return data.upper()
+    ```
 
-   - Update type hints when the code changes
-   - Ensures that the type hints remain accurate
+1. **Document Type Variables**
 
-## Common Pitfalls
+    ```python
+    from typing import TypeVar
 
-1. **Overuse of `Any`**
+    T = TypeVar("T", str, int)  # T can be str or int
 
-   - Avoid using `Any` unless absolutely necessary
-   - Reduces the benefits of static typing
 
-1. **Ignoring Type Errors**
+    def first_element(lst: list[T]) -> T:
+        return lst[0]
+    ```
 
-   - Treat type errors as serious issues
-   - Fix them promptly to prevent runtime errors
+## Configuring mypy
 
-1. **Complex Type Hierarchies**
+Enabling an automatic type checker for your codebase is quite easy. Simply `uv add mypy` in your [venv](/docs/python/essential-tools.md), and then you can run `mypy .`. Once your codebase satisfies basic rules (checked by `mypy .` call), you can try & run `mypy --strict .`.
 
-   - Keep type hierarchies simple and understandable
-   - Avoid over-engineering type definitions
+You can also update your `pyproject.toml` (alredy done in [python-template](https://github.com/batistagroup/python-template/)) to have strict enabled by default.
 
-## When to Skip Typing
+```toml
+[tool.mypy]
+strict = true
+exclude = ["tests"]                    # specifies which directories are not checked
+ignore_missing_imports = true          # so that it doesn't complain about types in external libraries
+disable_error_code = ["unused-ignore"]
+```
 
-While typing is generally beneficial, some cases might not require it:
+## Summary
 
-1. **Small Scripts**
-
-   - Simple scripts with limited functionality
-   - Where the benefits of typing are minimal
-
-1. **Prototyping**
-
-   - Early-stage prototyping where code is rapidly changing
-   - Typing can add overhead without significant benefit
-
-1. **Legacy Code**
-
-   - Codebases where adding type hints is impractical
-   - Due to the size or complexity of the code
-   - For example, integrating type hints into a large, established project like RDKit might require significant refactoring and could be a substantial undertaking. Prioritize adding types to new code or critical sections of legacy code (perhaps by type stubs) rather than attempting a complete overhaul.
-
-## Conclusion
-
-Typing in Python enhances code readability, enables early error detection, and improves maintainability. By adopting typing best practices and utilizing tools like MyPy, you can write more robust and reliable Python code.
+Type hints are a powerful tool for improving code clarity, reducing bugs, and ensuring robust software development. Whether you're working on a small script or a large-scale project, leveraging Python's type system can significantly enhance your development process.
