@@ -1,0 +1,1215 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../../git/git/">
+      
+      
+        <link rel="next" href="../tests/intro/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.4">
+    
+    
+      
+        <title>Python Starter Pack - Batista Group Knowledgebase</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.8608ea7d.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#python-starter-pack" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Batista Group Knowledgebase" class="md-header__button md-logo" aria-label="Batista Group Knowledgebase" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Batista Group Knowledgebase
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Python Starter Pack
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Batista Group Knowledgebase" class="md-nav__button md-logo" aria-label="Batista Group Knowledgebase" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Batista Group Knowledgebase
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Batista Group Knowledgebase
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../labels/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Labels Guide
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Git
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Git
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../git/git/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Version Control with Git
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Python
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Python
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Python Starter Pack
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Python Starter Pack
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      Overview
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#choosing-uv-as-a-package-manager" class="md-nav__link">
+    <span class="md-ellipsis">
+      Choosing uv as a package manager
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Choosing uv as a package manager">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#why-not-conda" class="md-nav__link">
+    <span class="md-ellipsis">
+      Why not conda?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#why-not-pyenv-venv" class="md-nav__link">
+    <span class="md-ellipsis">
+      Why not pyenv + venv?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#so-why-uv" class="md-nav__link">
+    <span class="md-ellipsis">
+      So why uv?
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#starting-a-new-project" class="md-nav__link">
+    <span class="md-ellipsis">
+      Starting a new project
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#creating-your-package" class="md-nav__link">
+    <span class="md-ellipsis">
+      Creating your package
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Creating your package">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#why-should-i-put-my-package-under-src" class="md-nav__link">
+    <span class="md-ellipsis">
+      Why should I put my package under src/
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#installing-dependencies" class="md-nav__link">
+    <span class="md-ellipsis">
+      Installing Dependencies
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Installing Dependencies">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#your-package" class="md-nav__link">
+    <span class="md-ellipsis">
+      Your package
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#external-dependencies" class="md-nav__link">
+    <span class="md-ellipsis">
+      External Dependencies
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pyprojecttoml-and-uvlock" class="md-nav__link">
+    <span class="md-ellipsis">
+      pyproject.toml and uv.lock
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dependency-groups" class="md-nav__link">
+    <span class="md-ellipsis">
+      Dependency Groups
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#migrating-from-traditional-tools" class="md-nav__link">
+    <span class="md-ellipsis">
+      Migrating from Traditional Tools
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Migrating from Traditional Tools">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#from-pip-venv" class="md-nav__link">
+    <span class="md-ellipsis">
+      From pip + venv
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#from-conda" class="md-nav__link">
+    <span class="md-ellipsis">
+      From conda
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      Summary
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Summary">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#key-takeaways" class="md-nav__link">
+    <span class="md-ellipsis">
+      Key Takeaways
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#related-resources" class="md-nav__link">
+    <span class="md-ellipsis">
+      Related Resources
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_2" id="__nav_4_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Tests
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_2">
+            <span class="md-nav__icon md-icon"></span>
+            Tests
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tests/intro/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    The Art of Testing Python Code
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_3" id="__nav_4_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Typing
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_3">
+            <span class="md-nav__icon md-icon"></span>
+            Typing
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../typing/intro/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Introduction to Python Type Hints
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      Overview
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#choosing-uv-as-a-package-manager" class="md-nav__link">
+    <span class="md-ellipsis">
+      Choosing uv as a package manager
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Choosing uv as a package manager">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#why-not-conda" class="md-nav__link">
+    <span class="md-ellipsis">
+      Why not conda?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#why-not-pyenv-venv" class="md-nav__link">
+    <span class="md-ellipsis">
+      Why not pyenv + venv?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#so-why-uv" class="md-nav__link">
+    <span class="md-ellipsis">
+      So why uv?
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#starting-a-new-project" class="md-nav__link">
+    <span class="md-ellipsis">
+      Starting a new project
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#creating-your-package" class="md-nav__link">
+    <span class="md-ellipsis">
+      Creating your package
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Creating your package">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#why-should-i-put-my-package-under-src" class="md-nav__link">
+    <span class="md-ellipsis">
+      Why should I put my package under src/
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#installing-dependencies" class="md-nav__link">
+    <span class="md-ellipsis">
+      Installing Dependencies
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Installing Dependencies">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#your-package" class="md-nav__link">
+    <span class="md-ellipsis">
+      Your package
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#external-dependencies" class="md-nav__link">
+    <span class="md-ellipsis">
+      External Dependencies
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pyprojecttoml-and-uvlock" class="md-nav__link">
+    <span class="md-ellipsis">
+      pyproject.toml and uv.lock
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dependency-groups" class="md-nav__link">
+    <span class="md-ellipsis">
+      Dependency Groups
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#migrating-from-traditional-tools" class="md-nav__link">
+    <span class="md-ellipsis">
+      Migrating from Traditional Tools
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Migrating from Traditional Tools">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#from-pip-venv" class="md-nav__link">
+    <span class="md-ellipsis">
+      From pip + venv
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#from-conda" class="md-nav__link">
+    <span class="md-ellipsis">
+      From conda
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      Summary
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Summary">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#key-takeaways" class="md-nav__link">
+    <span class="md-ellipsis">
+      Key Takeaways
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#related-resources" class="md-nav__link">
+    <span class="md-ellipsis">
+      Related Resources
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="python-starter-pack">Python Starter Pack</h1>
+<h2 id="overview">Overview</h2>
+<p>This guide provides a modern, efficient approach to Python project management using <code>uv</code>, a high-performance replacement for traditional tools like pip, pyenv, and poetry. It's designed for Python developers who want to streamline their development workflow and adopt current best practices for dependency management.</p>
+<div class="admonition info">
+<p class="admonition-title">Prerequisites</p>
+<ul>
+<li>Basic familiarity with Python and command line</li>
+<li>Basic understanding of virtual environments and package management</li>
+<li>macOS, Linux, or Windows system</li>
+</ul>
+</div>
+<h2 id="choosing-uv-as-a-package-manager">Choosing uv as a package manager</h2>
+<p><a href="https://docs.astral.sh/uv/">uv</a> is a python project and package manager that replaces <code>pip</code>, <code>pyenv</code>, <code>poetry</code>, and mostly <code>conda</code>. It's faster, simpler, and better.</p>
+<h3 id="why-not-conda">Why not conda?</h3>
+<p>You can have many anti-conda rants on the internet. It's bulky, it has complicated installation process that easily tricks you into installing the full anaconda suit with all the things you never need. Pragmatically, each time you create a new virtual environment, it installs a new python in that env, so if you have 5 different projects each using python 3.12.8, you will have 5 copies of python 3.12.8 installed. Why would you want that?</p>
+<h3 id="why-not-pyenv-venv">Why not pyenv + venv?</h3>
+<p>A more reasonable alternative, until Feb 2024, was using pyenv, which installs global versions of python that you can easily switch between, and then creating <code>venv</code> using python native <code>python -m venv venv</code>. Your workflow was:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>pyenv<span class="w"> </span><span class="nb">local</span><span class="w"> </span><span class="m">3</span>.12
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>python<span class="w"> </span>-m<span class="w"> </span>venv<span class="w"> </span>venv
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="nb">source</span><span class="w"> </span>venv/bin/activate
+</span></code></pre></div>
+<h3 id="so-why-uv">So why uv?</h3>
+<p>uv basically mirrors workflow above, but makes everything faster.</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>uv<span class="w"> </span>venv<span class="w"> </span>--python<span class="w"> </span><span class="m">3</span>.12
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="nb">source</span><span class="w"> </span>.venv/bin/activate
+</span></code></pre></div>
+<p>As a bonus, <a href="https://docs.astral.sh/uv/getting-started/installation/">installing uv</a> is incredibly easy, just one curl script that is easily found in docs without requiring you to go through 10 accordeons and tabs.</p>
+<h2 id="starting-a-new-project">Starting a new project</h2>
+<p>After creating and <code>cd</code> into your project directory, you can run <code>uv init</code>, which will create:</p>
+<ul>
+<li><code>.python-version</code> - a simple text file specifying python version you chose when running <code>uv venv --python 3.12</code>. If a project has <code>.python-version</code> specified, you can simply run <code>uv venv</code> and it'll use (or install if that python is not installed already) python version specified in <code>.python-version</code>.</li>
+<li><code>pyproject.toml</code> - a modern replacement to <code>setup.py</code>, <code>requirements.txt</code>.</li>
+<li><code>main.py</code> - your first <code>.py</code> file.</li>
+</ul>
+<p>See <a href="https://github.com/batistagroup/python-template">python-template repo</a> for an example of a filled <code>pyproject.toml</code>.</p>
+<h2 id="creating-your-package">Creating your package</h2>
+<p>Choosing when to structure your code as a package is ultimately a matter of preference. As of today, I prefer to create a package from the very beginning. Simply because:</p>
+<ul>
+<li>if it's a research project, I will release the code regardless of whether it truly is a standalone package (i.e. other people will use it in their projects as a dependency) just for reproducibility reasons</li>
+<li>given that <code>uv</code> uses <code>pyproject.toml</code> to enumerate dependencies already, it's a matter of a few extra lines to convert codebase into a package</li>
+<li>having a central package removes the necessity to either explicitly add path to sys or use some complicated relative path imports. If you had these issues before, you know what I mean.</li>
+</ul>
+<h3 id="why-should-i-put-my-package-under-src">Why should I put my package under src/</h3>
+<p>You might notice that <a href="https://github.com/batistagroup/python-template">python-template repo</a> or <a href="https://github.com/batistagroup/DirectMultiStep">DirectMultiStep</a> hides the package files under <code>src/</code> directory. This is a good practice, because, if you have the following structure:</p>
+<div class="language-md highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>my-project/
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>├── pyproject.toml
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>├── README.md
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>├── my_package/
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>│   ├── <span class="gs">__init__</span>.py
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>│   └── module.py
+</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>└── script.py
+</span></code></pre></div>
+<p>when you install <code>my_package</code> in development mode (e.g. <code>uv pip install -e .</code>), the project root directory (<code>my-project/</code>) is added to the python path. This means that any file in your project root can be accidentally imported as part of your package. For example, if you have a <code>script.py</code> in your project root, it could be mistakenly imported as <code>my_package.test</code>.</p>
+<p>By placing your package under <code>src/</code>, like this:</p>
+<div class="language-md highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>my-project/
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>├── pyproject.toml
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>├── README.md
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>├── src/
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>│   └── my_package/
+</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>│       ├── <span class="gs">__init__</span>.py
+</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a>│       └── module.py
+</span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a>└── tests/
+</span></code></pre></div>
+<p>and configuring your <code>pyproject.toml</code> accordingly, only the <code>src/</code> directory is added to the python path during development installation. This clearly separates your package code from other project files (like configuration, tests, documentation, etc.) and prevents potential naming conflicts and accidental imports from the project root. It's a cleaner and more robust way to structure your project.</p>
+<h3 id="installing-dependencies">Installing Dependencies</h3>
+<h4 id="your-package">Your package</h4>
+<p>Once you've created some package in <code>src/</code>, all that remains is to add this to your <code>pyproject.toml</code>:</p>
+<div class="language-toml highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="k">[tool.setuptools]</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="n">packages</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;my_package&quot;</span><span class="p">]</span>
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="n">package-dir</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s2">&quot;src&quot;</span><span class="w"> </span><span class="p">}</span>
+</span></code></pre></div>
+<div class="admonition warning">
+<p class="admonition-title">Don't forget to activate your venv</p>
+<p>Once you have your project set up, your venv should be pretty much always activated. Your IDE (VSCode, Cursor) should automatically recognize presence of <code>.venv</code> folder and activate it in the terminal sessions. But if you open your repository in a standalone terminal window, you'll have to manually <code>source .venv/bin/activate</code>.</p>
+</div>
+<p>After this, you can install your package in development mode <code>uv pip install -e .</code>. The <code>-e</code> specifies dev mode and effectively it means that any changes made to the source code in <code>src/my_package</code> will be immediately available (i.e. you don't need to reinstall your package).</p>
+<h4 id="external-dependencies">External Dependencies</h4>
+<p>Instead of running <code>pip install package</code> you should use <code>uv add package</code>. Using <code>uv add</code> instead of <code>pip install</code> results in:</p>
+<ul>
+<li><code>package</code> added as dependency to <code>pyproject.toml</code></li>
+<li><code>uv.lock</code> updated</li>
+</ul>
+<p>You might find <a href="https://docs.astral.sh/uv/concepts/projects/dependencies/">uv's docs</a> helpful if you need to specify specific (including platform-specific) source for the package.</p>
+<h4 id="pyprojecttoml-and-uvlock">pyproject.toml and uv.lock</h4>
+<p>At this point, you might wonder -- what is <code>uv.lock</code> and how is it different from <code>pyproject.toml</code>?</p>
+<p>In short:</p>
+<ul>
+<li><code>pyproject.toml</code> is a soft specification of minimal version requirements of top-level packages</li>
+<li><code>uv.lock</code> is a strict and full specification of all packages installed in current venv.</li>
+</ul>
+<p>As an example, if you <code>uv add</code> a package, say, SciPy, <code>pyproject.toml</code> will add <code>scipy&gt;=1.15.2.</code>, i.e. a spec of minimally required version. However, SciPy itself depends on NumPy, so NumPy will be installed in the venv and reflected in <code>uv.lock</code>, but not in <code>pyproject.toml</code>.</p>
+<p>In some sense, <code>uv.lock</code> is similar to what you'd get from <code>pip freeze</code>. Why do we need both <code>pyproject.toml</code> and <code>uv.lock</code>?</p>
+<ul>
+<li><code>pyproject.toml</code> is useful to keep track of which packages you intentionally added. If you want to update, say, SciPy to 1.16, you can update <code>pyproject.toml</code> and run <code>uv lock --upgrade</code>. If SciPy depends on 10 other packages, you shouldn't be required to manually update dependencies of all those packages, which is why it's all handled for you by <code>uv.lock</code>.</li>
+<li><code>uv.lock</code> is useful because it allows any other user to recreate your local environment exactly. You never need to manually modify this file, as long as you use <code>uv add</code>, <code>uv remove</code> to handle dependencies.</li>
+</ul>
+<p>See <a href="https://docs.astral.sh/uv/concepts/projects/sync/#exporting-the-lockfile">uv locking and syncing page</a> for more details.</p>
+<div class="admonition tip">
+<p class="admonition-title">uv.lock gives you confidence that your code will always work</p>
+<p>Basically, once you have a working codebase, even if you stop working on it, you (or any other human) can come back to it at any point in the future, and he'll be able to run it without any issues. Your code will work even if numpy updated 10 times in the meantime or some other package stopped being maintained. Fun fact: lock files have been a standard in web dev for almost 15 years, you might be familiar with <code>package-lock.json</code> and <code>yarn.lock</code>.</p>
+</div>
+<h4 id="dependency-groups">Dependency Groups</h4>
+<p>By default, every package you <code>uv add</code> appears as:</p>
+<div class="language-toml highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="k">[project]</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="n">dependencies</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;numpy==1.26.4&quot;</span><span class="p">]</span>
+</span></code></pre></div>
+<p>However, you can also have optional dependency groups:</p>
+<div class="language-toml highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="k">[project.optional-dependencies]</span>
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="n">dev</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;ruff&gt;=0.9.6&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;mypy&gt;=1.15.0&quot;</span><span class="p">]</span>
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="n">web</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;flask&gt;=3.1.0&quot;</span><span class="p">]</span>
+</span></code></pre></div>
+<p>which you can install by:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>uv<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>-e<span class="w"> </span><span class="s2">&quot;.[dev]&quot;</span><span class="w"> </span><span class="c1"># will install main deps and dev deps</span>
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>uv<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>-e<span class="w"> </span><span class="s2">&quot;.[web]&quot;</span><span class="w"> </span><span class="c1"># will install main + web deps</span>
+</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>uv<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>-e<span class="w"> </span><span class="s2">&quot;.[dev,web]&quot;</span><span class="w"> </span><span class="c1"># will install main + dev + web deps</span>
+</span></code></pre></div>
+<p>which is useful when, say, 2 people are working on the project and only one of them develops the web-facing code. There's no reason for the other person to have all web-related dependencies in his venv, so they can be separated into a dep group.</p>
+<h2 id="migrating-from-traditional-tools">Migrating from Traditional Tools</h2>
+<h3 id="from-pip-venv">From pip + venv</h3>
+<p>If you're currently using pip with venv, migration is straightforward:</p>
+<ol>
+<li>
+<p>Install uv: Follow the installation instructions above</p>
+</li>
+<li>
+<p>For existing projects:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="c1"># In your project directory</span>
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>uv<span class="w"> </span>pip<span class="w"> </span>freeze<span class="w"> </span>&gt;<span class="w"> </span>requirements.txt<span class="w">  </span><span class="c1"># Export current dependencies</span>
+</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>deactivate<span class="w">  </span><span class="c1"># Exit current venv</span>
+</span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a>rm<span class="w"> </span>-rf<span class="w"> </span>venv/<span class="w">  </span><span class="c1"># Remove old venv</span>
+</span><span id="__span-8-5"><a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a>uv<span class="w"> </span>venv<span class="w">  </span><span class="c1"># Create new venv</span>
+</span><span id="__span-8-6"><a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a><span class="nb">source</span><span class="w"> </span>.venv/bin/activate
+</span><span id="__span-8-7"><a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a>uv<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </span>requirements.txt<span class="w">  </span><span class="c1"># Install dependencies</span>
+</span></code></pre></div>
+</li>
+<li>
+<p>Convert to modern structure:</p>
+<ul>
+<li>Create <code>pyproject.toml</code> using <code>uv init</code></li>
+<li>Move dependencies from <code>requirements.txt</code> to <code>pyproject.toml</code></li>
+<li>Run <code>uv pip install -e .</code> to install in editable mode</li>
+</ul>
+</li>
+</ol>
+<h3 id="from-conda">From conda</h3>
+<p>For conda users, the transition requires a few additional steps:</p>
+<ol>
+<li>
+<p>Export your conda environment:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>conda<span class="w"> </span>list<span class="w"> </span>--explicit<span class="w"> </span>&gt;<span class="w"> </span>conda-packages.txt
+</span></code></pre></div>
+</li>
+<li>
+<p>Identify pure Python packages from conda-packages.txt</p>
+</li>
+<li>
+<p>Create new project with uv:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>uv<span class="w"> </span>venv
+</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="nb">source</span><span class="w"> </span>.venv/bin/activate
+</span></code></pre></div>
+</li>
+<li>
+<p>Install required packages using <code>uv add</code></p>
+</li>
+<li>
+<p>For conda-specific packages (like MKL-optimized numpy), refer to package documentation for pip-compatible alternatives</p>
+</li>
+</ol>
+<h2 id="summary">Summary</h2>
+<h3 id="key-takeaways">Key Takeaways</h3>
+<ul>
+<li><code>uv</code> provides a faster, simpler alternative to traditional Python tooling</li>
+<li>The src/ layout with pyproject.toml offers a clean, modern project structure</li>
+<li>Lock files ensure reproducible environments across team members and time</li>
+<li>Dependency groups help manage optional features efficiently</li>
+</ul>
+<h3 id="related-resources">Related Resources</h3>
+<ul>
+<li><a href="https://docs.astral.sh/uv/">uv Documentation</a></li>
+<li><a href="https://packaging.python.org/">Python Packaging User Guide</a></li>
+<li><a href="https://github.com/batistagroup/python-template">Batista Group Python Template</a></li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["content.code.copy"], "search": "../../assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.f1b6f286.min.js"></script>
+      
+    
+  </body>
+</html>
