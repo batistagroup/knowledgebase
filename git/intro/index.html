@@ -1,0 +1,1411 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      
+        <link rel="next" href="../pre-commit/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.4">
+    
+    
+      
+        <title>Git and GitHub for Computational Research - Batista Group Knowledgebase</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.8608ea7d.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#git-and-github-for-computational-research" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Batista Group Knowledgebase" class="md-header__button md-logo" aria-label="Batista Group Knowledgebase" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Batista Group Knowledgebase
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Git and GitHub for Computational Research
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Batista Group Knowledgebase" class="md-nav__button md-logo" aria-label="Batista Group Knowledgebase" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Batista Group Knowledgebase
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_1" id="__nav_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Git
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_1">
+            <span class="md-nav__icon md-icon"></span>
+            Git
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Git and GitHub for Computational Research
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Git and GitHub for Computational Research
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      Overview
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-why-version-control" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Why Version Control?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Why Version Control?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#for-research-code" class="md-nav__link">
+    <span class="md-ellipsis">
+      For Research Code
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#for-python-packages" class="md-nav__link">
+    <span class="md-ellipsis">
+      For Python Packages
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-git-fundamentals" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Git Fundamentals
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Git Fundamentals">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-core-concepts" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.1 Core Concepts
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-project-structure" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.2 Project Structure
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-branching-strategy" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Branching Strategy
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Branching Strategy">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-core-branches" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.1 Core Branches
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-branch-lifecycle" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.2 Branch Lifecycle
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-essential-git-commands" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Essential Git Commands
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Essential Git Commands">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#common-workflows" class="md-nav__link">
+    <span class="md-ellipsis">
+      Common Workflows
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#advanced-techniques" class="md-nav__link">
+    <span class="md-ellipsis">
+      Advanced Techniques
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Advanced Techniques">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#finding-bugs-with-git-bisect" class="md-nav__link">
+    <span class="md-ellipsis">
+      Finding Bugs with git bisect
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-security-and-data-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. Security and Data Management
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. Security and Data Management">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sensitive-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sensitive Data
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#access-control" class="md-nav__link">
+    <span class="md-ellipsis">
+      Access Control
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-best-practices" class="md-nav__link">
+    <span class="md-ellipsis">
+      7. Best Practices
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7. Best Practices">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#for-research-projects" class="md-nav__link">
+    <span class="md-ellipsis">
+      For Research Projects
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#for-python-packages_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      For Python Packages
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-common-mistakes-to-avoid" class="md-nav__link">
+    <span class="md-ellipsis">
+      8. Common Mistakes to Avoid
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-additional-resources" class="md-nav__link">
+    <span class="md-ellipsis">
+      9. Additional Resources
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pre-commit/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Pre-commit Workflows
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../github-workflows/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    GitHub Workflows: Automated CI/CD Pipeline Management
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Python
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Python
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/essential-tools/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Python Starter Pack
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/lint/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Python Code Linting with Ruff
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/template-repo/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Python Project Template
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_4" id="__nav_2_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Tests
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_4">
+            <span class="md-nav__icon md-icon"></span>
+            Tests
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/tests/intro/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    The Art of Testing Python Code
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_5" id="__nav_2_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Typing
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_5">
+            <span class="md-nav__icon md-icon"></span>
+            Typing
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/typing/intro/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Introduction to Python Type Hints
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../labels/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Labels Guide
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      Overview
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-why-version-control" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Why Version Control?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Why Version Control?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#for-research-code" class="md-nav__link">
+    <span class="md-ellipsis">
+      For Research Code
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#for-python-packages" class="md-nav__link">
+    <span class="md-ellipsis">
+      For Python Packages
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-git-fundamentals" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Git Fundamentals
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Git Fundamentals">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-core-concepts" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.1 Core Concepts
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-project-structure" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.2 Project Structure
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-branching-strategy" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Branching Strategy
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Branching Strategy">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-core-branches" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.1 Core Branches
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-branch-lifecycle" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.2 Branch Lifecycle
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-essential-git-commands" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Essential Git Commands
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Essential Git Commands">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#common-workflows" class="md-nav__link">
+    <span class="md-ellipsis">
+      Common Workflows
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#advanced-techniques" class="md-nav__link">
+    <span class="md-ellipsis">
+      Advanced Techniques
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Advanced Techniques">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#finding-bugs-with-git-bisect" class="md-nav__link">
+    <span class="md-ellipsis">
+      Finding Bugs with git bisect
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-security-and-data-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. Security and Data Management
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. Security and Data Management">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sensitive-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sensitive Data
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#access-control" class="md-nav__link">
+    <span class="md-ellipsis">
+      Access Control
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-best-practices" class="md-nav__link">
+    <span class="md-ellipsis">
+      7. Best Practices
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7. Best Practices">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#for-research-projects" class="md-nav__link">
+    <span class="md-ellipsis">
+      For Research Projects
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#for-python-packages_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      For Python Packages
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-common-mistakes-to-avoid" class="md-nav__link">
+    <span class="md-ellipsis">
+      8. Common Mistakes to Avoid
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-additional-resources" class="md-nav__link">
+    <span class="md-ellipsis">
+      9. Additional Resources
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="git-and-github-for-computational-research">Git and GitHub for Computational Research</h1>
+<p>Git and GitHub are essential tools for both research and software development. Whether you're working on a research project or building a Python package, version control helps you track changes, collaborate with others, and maintain high-quality code. This guide shows you how to use these tools effectively in your daily work.</p>
+<h2 id="overview">Overview</h2>
+<p>Version control is a crucial skill for anyone writing code. You'll learn how to track your code changes, collaborate with others, and manage your projects effectively. We'll cover both research workflows and Python package development, showing you the best practices for each.</p>
+<p>To follow along, you'll need Git installed (version 2.0 or higher), a GitHub account, and your favorite code editor. Basic command line knowledge will help, but we'll explain all commands as we go.</p>
+<h2 id="1-why-version-control">1. Why Version Control?</h2>
+<p>Version control helps you in the following cases:</p>
+<h3 id="for-research-code">For Research Code</h3>
+<p>Your experiments generate lots of code variations and data. Git helps you track which parameters produced which results, maintain a complete history of your analysis changes, and document your computational setup. When collaborating with others, you can easily merge different analyses and review each other's work.</p>
+<p>When exploring new ideas, Git lets you try things out without fear of breaking what works. Every failed approach becomes valuable documentation rather than lost work. Years later, you can understand why certain decisions were made and build upon past knowledge.</p>
+<p>For example, imagine you have this working function for data processing:</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">process_data</span><span class="p">(</span><span class="n">data</span><span class="p">):</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Process input data using moving average.&quot;&quot;&quot;</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>    <span class="n">window_size</span> <span class="o">=</span> <span class="mi">5</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>    <span class="n">result</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">)</span> <span class="o">-</span> <span class="n">window_size</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>        <span class="n">window</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">i</span> <span class="p">:</span> <span class="n">i</span> <span class="o">+</span> <span class="n">window_size</span><span class="p">]</span>
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>        <span class="n">result</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="n">window</span><span class="p">)</span> <span class="o">/</span> <span class="n">window_size</span><span class="p">)</span>
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>    <span class="k">return</span> <span class="n">result</span>
+</span></code></pre></div>
+<p>Without version control, you might try something like this:</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">process_data</span><span class="p">(</span><span class="n">data</span><span class="p">):</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Process input data using moving average.&quot;&quot;&quot;</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>    <span class="n">window_size</span> <span class="o">=</span> <span class="mi">5</span>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>    <span class="n">result</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">)</span> <span class="o">-</span> <span class="n">window_size</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>        <span class="n">window</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">i</span> <span class="p">:</span> <span class="n">i</span> <span class="o">+</span> <span class="n">window_size</span><span class="p">]</span>
+</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>        <span class="n">result</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="n">window</span><span class="p">)</span> <span class="o">/</span> <span class="n">window_size</span><span class="p">)</span>
+</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>    <span class="k">return</span> <span class="n">result</span>
+</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>
+</span><span id="__span-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a>
+</span><span id="__span-1-11"><a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="c1"># New version with weighted average</span>
+</span><span id="__span-1-12"><a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a><span class="c1"># TODO: Delete old version if this works better</span>
+</span><span id="__span-1-13"><a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a><span class="k">def</span><span class="w"> </span><span class="nf">process_data_weighted</span><span class="p">(</span><span class="n">data</span><span class="p">):</span>
+</span><span id="__span-1-14"><a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Process input data using weighted moving average.&quot;&quot;&quot;</span>
+</span><span id="__span-1-15"><a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a>    <span class="n">window_size</span> <span class="o">=</span> <span class="mi">5</span>
+</span><span id="__span-1-16"><a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a>    <span class="n">weights</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">]</span>
+</span><span id="__span-1-17"><a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a>    <span class="n">result</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="__span-1-18"><a id="__codelineno-1-18" name="__codelineno-1-18" href="#__codelineno-1-18"></a>    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">)</span> <span class="o">-</span> <span class="n">window_size</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
+</span><span id="__span-1-19"><a id="__codelineno-1-19" name="__codelineno-1-19" href="#__codelineno-1-19"></a>        <span class="n">window</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">i</span> <span class="p">:</span> <span class="n">i</span> <span class="o">+</span> <span class="n">window_size</span><span class="p">]</span>
+</span><span id="__span-1-20"><a id="__codelineno-1-20" name="__codelineno-1-20" href="#__codelineno-1-20"></a>        <span class="n">result</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="n">w</span> <span class="o">*</span> <span class="n">x</span> <span class="k">for</span> <span class="n">w</span><span class="p">,</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">weights</span><span class="p">,</span> <span class="n">window</span><span class="p">)))</span>
+</span><span id="__span-1-21"><a id="__codelineno-1-21" name="__codelineno-1-21" href="#__codelineno-1-21"></a>    <span class="k">return</span> <span class="n">result</span>
+</span></code></pre></div>
+<p>With Git, you can explore this change more cleanly:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>git<span class="w"> </span>checkout<span class="w"> </span>-b<span class="w"> </span>feature/weighted-average
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="c1"># Edit process_data() directly in your code</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;Switch to weighted moving average for better noise handling&quot;</span>
+</span></code></pre></div>
+<p>If the new approach works better, merge it to main. If not, just switch back:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>git<span class="w"> </span>checkout<span class="w"> </span>main<span class="w">  </span><span class="c1"># Your original version is safe here</span>
+</span></code></pre></div>
+<p>The failed experiment isn't wasted—the branch preserves the complete context of what you tried and why.</p>
+<h3 id="for-python-packages">For Python Packages</h3>
+<p>When building Python packages, Git helps you manage releases and maintain backward compatibility. You can develop new features without disrupting users of the stable version, track bugs across releases, and coordinate with contributors worldwide.</p>
+<h2 id="2-git-fundamentals">2. Git Fundamentals</h2>
+<h3 id="21-core-concepts">2.1 Core Concepts</h3>
+<p>Git tracks your code's evolution through a series of snapshots. Each snapshot, called a <strong>commit</strong>, records the complete state of your files at a specific point in time. You can always return to any previous state.</p>
+<p><strong>Branches</strong> let you maintain different versions of your code simultaneously. The main branch typically contains your stable code, while feature branches let you experiment without affecting that stability. You can create as many branches as you need and merge them back together later.</p>
+<p><strong>Tags</strong> are permanent markers you attach to specific commits. Unlike branches, tags don't move as you add new commits. They're perfect for marking important points in your project's history, like release versions or significant milestones.</p>
+<p>The <strong><code>.gitignore</code></strong> file tells Git which files it shouldn't track. This is crucial for keeping your repository clean and efficient—you don't want to track temporary files, build outputs, or large data files (<code>.csv,.pkl,.ckpt</code>) that can be regenerated.</p>
+<p>These concepts map naturally to both research and software development:</p>
+<table>
+<thead>
+<tr>
+<th>Git Concept</th>
+<th>Research Use</th>
+<th>Package Development Use</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Commits</td>
+<td>Snapshot experiment state</td>
+<td>Record feature implementation</td>
+</tr>
+<tr>
+<td>Branches</td>
+<td>Test different approaches</td>
+<td>Develop features independently</td>
+</tr>
+<tr>
+<td>Tags</td>
+<td>Mark dataset versions</td>
+<td>Release package versions</td>
+</tr>
+<tr>
+<td>.gitignore</td>
+<td>Exclude raw data</td>
+<td>Ignore build artifacts</td>
+</tr>
+</tbody>
+</table>
+<h3 id="22-project-structure">2.2 Project Structure</h3>
+<p>A well-structured Python project, whether for research or distribution, typically looks like this:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>project/
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>├── src/                 # Source code
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>│   └── yourpackage/
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>│       ├── __init__.py
+</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>│       └── core.py
+</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>├── tests/              # Test suite
+</span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a>├── docs/               # Documentation
+</span><span id="__span-4-8"><a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a>├── pyproject.toml     # Dependencies
+</span><span id="__span-4-9"><a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a>├── uv.lock           # Dependencies
+</span><span id="__span-4-10"><a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a>└── README.md         # Project overview
+</span></code></pre></div>
+<p>For research projects, you might add:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>research-project/
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>├── experiments/        # Experiment code
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>├── data/              # Data management
+</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>└── results/           # Outputs and figures
+</span></code></pre></div>
+<h2 id="3-branching-strategy">3. Branching Strategy</h2>
+<h3 id="31-core-branches">3.1 Core Branches</h3>
+<p>Your main branch represents the stable, published state of your work. For research, this means verified results and polished analysis. For Python packages, it's your latest stable release.</p>
+<p>Create feature branches for new work. Use descriptive names like <code>experiment/neural-net</code> for research or <code>feature/async-processing</code> for package development. This keeps your changes isolated and makes it easy to track different lines of work.</p>
+<h3 id="32-branch-lifecycle">3.2 Branch Lifecycle</h3>
+<p>When you start new work, branch off from main. Work on your changes, commit regularly, and push to GitHub to back up your work. Once you're satisfied with the results, create a pull request for team review. After approval, merge your changes back to main.</p>
+<p>If an experiment or feature doesn't work out, don't delete the branch immediately. Instead, tag it (like <code>archive/failed-approach-1</code>) to preserve the knowledge of what didn't work and why.</p>
+<h2 id="4-essential-git-commands">4. Essential Git Commands</h2>
+<h3 id="common-workflows">Common Workflows</h3>
+<p>Starting a new project:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>git<span class="w"> </span>init<span class="w">                                    </span><span class="c1"># Create new repository</span>
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>git<span class="w"> </span>remote<span class="w"> </span>add<span class="w"> </span>origin<span class="w"> </span>&lt;url&gt;<span class="w">                 </span><span class="c1"># Connect to GitHub</span>
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>git<span class="w"> </span>checkout<span class="w"> </span>-b<span class="w"> </span>feature/initial-setup<span class="w">       </span><span class="c1"># Start work on first feature</span>
+</span></code></pre></div>
+<p>Tracking your changes:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>git<span class="w"> </span>add<span class="w"> </span>.<span class="w">                                   </span><span class="c1"># Stage all changes</span>
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;Add data processing module&quot;</span><span class="w">  </span><span class="c1"># Record changes</span>
+</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>git<span class="w"> </span>push<span class="w"> </span>origin<span class="w"> </span>feature/data-processing<span class="w">     </span><span class="c1"># Share with team</span>
+</span></code></pre></div>
+<p>Collaborating with others:</p>
+<p>There are two main ways to get changes from your team. Using <code>pull</code> is simpler but less precise, while <code>fetch + rebase</code> gives you more control:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="c1"># Option 1: Simple but less control</span>
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>git<span class="w"> </span>pull<span class="w">                                    </span><span class="c1"># Fetch + merge in one step</span>
+</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>
+</span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="c1"># Option 2: More explicit and clean history</span>
+</span><span id="__span-8-5"><a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a>git<span class="w"> </span>fetch<span class="w">                                   </span><span class="c1"># Download changes without applying</span>
+</span><span id="__span-8-6"><a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a>git<span class="w"> </span>rebase<span class="w"> </span>origin/main<span class="w">                      </span><span class="c1"># Replay your work on top of team&#39;s changes</span>
+</span></code></pre></div>
+<p>The key difference is how your changes combine with your team's work:</p>
+<ul>
+<li><code>git pull</code> downloads and merges changes immediately, which can create merge commits</li>
+<li><code>git fetch</code> only downloads changes, letting you decide how to integrate them</li>
+<li><code>git rebase</code> replays your changes on top of the team's work, keeping history linear</li>
+</ul>
+<p>Choose <code>fetch + rebase</code> when you want a clean, linear history. Use <code>pull</code> for quick updates when the extra merge commits don't matter.</p>
+<h3 id="advanced-techniques">Advanced Techniques</h3>
+<h4 id="finding-bugs-with-git-bisect">Finding Bugs with git bisect</h4>
+<p><code>git bisect</code> is a powerful debugging tool that helps you find which commit introduced a bug using binary search. You start by telling Git two points in your project's history: a "good" commit where everything worked and a "bad" commit where the bug exists. Git then walks you through the commits between these points, efficiently narrowing down where the problem started.</p>
+<p>The process is interactive. For each commit Git checks out, you test your code to see if the bug exists. This could mean running your test suite, checking if your API returns correct results, or verifying your ML model's accuracy. You then tell Git whether this commit is "good" or "bad", and it uses this information to choose the next commit to test. Through this binary search process, Git can find the exact commit that introduced the problem in just a few steps, even if there are hundreds of commits to search through.</p>
+<p>For example, imagine your machine learning model's accuracy dropped from 90% to 60%. You know it worked well last month but can't pinpoint what change caused the regression. With bisect, you'd mark last month's commit as "good" and the current state as "bad". Git would then help you systematically test commits in between, perhaps revealing that a seemingly innocent change to your data preprocessing pipeline three weeks ago actually caused the accuracy drop.</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>git<span class="w"> </span>bisect<span class="w"> </span>start
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>git<span class="w"> </span>bisect<span class="w"> </span>bad<span class="w"> </span>HEAD
+</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>git<span class="w"> </span>bisect<span class="w"> </span>good<span class="w"> </span>v1.0
+</span><span id="__span-9-4"><a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="c1"># Git will now guide you through the binary search</span>
+</span></code></pre></div>
+<p>When bisect finishes, it shows you the exact commit that introduced the problem, complete with the commit message, author, and date. This information is invaluable for understanding not just what broke your code, but why and who might have context about the change.</p>
+<p>&lt;!-- #### Managing Large Files with Git LFS</p>
+<p>Git LFS (Large File Storage) solves the problem of storing large files (like datasets, models, or images) in your repository. Instead of storing the actual files in Git, LFS replaces them with small pointer files and stores the large files on a separate server.</p>
+<p>Here's how to use it:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="c1"># Install Git LFS</span>
+</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>git<span class="w"> </span>lfs<span class="w"> </span>install
+</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>
+</span><span id="__span-10-4"><a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="c1"># Tell LFS which files to track</span>
+</span><span id="__span-10-5"><a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a>git<span class="w"> </span>lfs<span class="w"> </span>track<span class="w"> </span><span class="s2">&quot;*.csv&quot;</span><span class="w">          </span><span class="c1"># Track all CSV files</span>
+</span><span id="__span-10-6"><a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a>git<span class="w"> </span>lfs<span class="w"> </span>track<span class="w"> </span><span class="s2">&quot;*.pkl&quot;</span><span class="w">          </span><span class="c1"># Track all pickle files</span>
+</span><span id="__span-10-7"><a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a>git<span class="w"> </span>lfs<span class="w"> </span>track<span class="w"> </span><span class="s2">&quot;models/**/*.h5&quot;</span><span class="w"> </span><span class="c1"># Track all HDF5 files in models directory</span>
+</span><span id="__span-10-8"><a id="__codelineno-10-8" name="__codelineno-10-8" href="#__codelineno-10-8"></a>
+</span><span id="__span-10-9"><a id="__codelineno-10-9" name="__codelineno-10-9" href="#__codelineno-10-9"></a><span class="c1"># The tracking rules are stored in .gitattributes</span>
+</span><span id="__span-10-10"><a id="__codelineno-10-10" name="__codelineno-10-10" href="#__codelineno-10-10"></a>git<span class="w"> </span>add<span class="w"> </span>.gitattributes
+</span><span id="__span-10-11"><a id="__codelineno-10-11" name="__codelineno-10-11" href="#__codelineno-10-11"></a>git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;Configure Git LFS tracking&quot;</span>
+</span><span id="__span-10-12"><a id="__codelineno-10-12" name="__codelineno-10-12" href="#__codelineno-10-12"></a>
+</span><span id="__span-10-13"><a id="__codelineno-10-13" name="__codelineno-10-13" href="#__codelineno-10-13"></a><span class="c1"># Now use Git normally - LFS handles the large files automatically</span>
+</span><span id="__span-10-14"><a id="__codelineno-10-14" name="__codelineno-10-14" href="#__codelineno-10-14"></a>git<span class="w"> </span>add<span class="w"> </span>my_large_dataset.csv
+</span><span id="__span-10-15"><a id="__codelineno-10-15" name="__codelineno-10-15" href="#__codelineno-10-15"></a>git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;Add training dataset&quot;</span>
+</span></code></pre></div>
+<p>LFS is particularly useful for:
+- Large datasets that need versioning
+- Trained model checkpoints
+- High-resolution images or videos
+- Any file over 50MB (GitHub's file size limit)</p>
+<p>When someone clones your repository, they can choose to download the large files or not:
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>git<span class="w"> </span>clone<span class="w"> </span>--no-checkout<span class="w"> </span>your-repo<span class="w">   </span><span class="c1"># Clone without downloading LFS files</span>
+</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>git<span class="w"> </span>lfs<span class="w"> </span>pull<span class="w">                        </span><span class="c1"># Download LFS files when needed</span>
+</span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a><span class="sb">```</span><span class="w"> </span>--&gt;
+</span><span id="__span-11-4"><a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a>
+</span><span id="__span-11-5"><a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a><span class="c1">## 5. Working with GitHub</span>
+</span><span id="__span-11-6"><a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a>
+</span><span id="__span-11-7"><a id="__codelineno-11-7" name="__codelineno-11-7" href="#__codelineno-11-7"></a><span class="c1">### Code Review</span>
+</span><span id="__span-11-8"><a id="__codelineno-11-8" name="__codelineno-11-8" href="#__codelineno-11-8"></a>
+</span><span id="__span-11-9"><a id="__codelineno-11-9" name="__codelineno-11-9" href="#__codelineno-11-9"></a>Code<span class="w"> </span>review<span class="w"> </span>is<span class="w"> </span>essential<span class="w"> </span><span class="k">for</span><span class="w"> </span>both<span class="w"> </span>research<span class="w"> </span>and<span class="w"> </span>package<span class="w"> </span>development.<span class="w"> </span>Create<span class="w"> </span>a<span class="w"> </span>pull<span class="w"> </span>request<span class="w"> </span>when<span class="w"> </span>you<span class="s1">&#39;re ready to merge your changes. Describe what you&#39;</span>ve<span class="w"> </span><span class="k">done</span><span class="w"> </span>and<span class="w"> </span>what<span class="w"> </span>problem<span class="w"> </span>it<span class="w"> </span>solves.<span class="w"> </span>For<span class="w"> </span>research<span class="w"> </span>code,<span class="w"> </span>include<span class="w"> </span>key<span class="w"> </span>results<span class="w"> </span>or<span class="w"> </span>visualizations.<span class="w"> </span>For<span class="w"> </span>package<span class="w"> </span>features,<span class="w"> </span>explain<span class="w"> </span>the<span class="w"> </span>API<span class="w"> </span>changes<span class="w"> </span>and<span class="w"> </span>include<span class="w"> </span>usage<span class="w"> </span>examples.
+</span><span id="__span-11-10"><a id="__codelineno-11-10" name="__codelineno-11-10" href="#__codelineno-11-10"></a>
+</span><span id="__span-11-11"><a id="__codelineno-11-11" name="__codelineno-11-11" href="#__codelineno-11-11"></a><span class="c1">### Project Management</span>
+</span><span id="__span-11-12"><a id="__codelineno-11-12" name="__codelineno-11-12" href="#__codelineno-11-12"></a>
+</span><span id="__span-11-13"><a id="__codelineno-11-13" name="__codelineno-11-13" href="#__codelineno-11-13"></a>Use<span class="w"> </span>GitHub<span class="w"> </span>Issues<span class="w"> </span>to<span class="w"> </span>track<span class="w"> </span>work.<span class="w"> </span>For<span class="w"> </span>research,<span class="w"> </span>create<span class="w"> </span>issues<span class="w"> </span><span class="k">for</span><span class="w"> </span>each<span class="w"> </span>experiment<span class="w"> </span>or<span class="w"> </span>analysis<span class="w"> </span>task.<span class="w"> </span>For<span class="w"> </span>package<span class="w"> </span>development,<span class="w"> </span>track<span class="w"> </span>feature<span class="w"> </span>requests,<span class="w"> </span>bug<span class="w"> </span>reports,<span class="w"> </span>and<span class="w"> </span>improvements.<span class="w"> </span>Link<span class="w"> </span>related<span class="w"> </span>pull<span class="w"> </span>requests<span class="w"> </span>to<span class="w"> </span>automatically<span class="w"> </span>close<span class="w"> </span>issues<span class="w"> </span>when<span class="w"> </span>work<span class="w"> </span>is<span class="w"> </span>merged.
+</span><span id="__span-11-14"><a id="__codelineno-11-14" name="__codelineno-11-14" href="#__codelineno-11-14"></a>
+</span><span id="__span-11-15"><a id="__codelineno-11-15" name="__codelineno-11-15" href="#__codelineno-11-15"></a><span class="c1">### Continuous Integration</span>
+</span><span id="__span-11-16"><a id="__codelineno-11-16" name="__codelineno-11-16" href="#__codelineno-11-16"></a>
+</span><span id="__span-11-17"><a id="__codelineno-11-17" name="__codelineno-11-17" href="#__codelineno-11-17"></a>Set<span class="w"> </span>up<span class="w"> </span>GitHub<span class="w"> </span>Actions<span class="w"> </span>to<span class="w"> </span>automate<span class="w"> </span>checks:
+</span><span id="__span-11-18"><a id="__codelineno-11-18" name="__codelineno-11-18" href="#__codelineno-11-18"></a>
+</span><span id="__span-11-19"><a id="__codelineno-11-19" name="__codelineno-11-19" href="#__codelineno-11-19"></a><span class="sb">```</span>yaml
+</span><span id="__span-11-20"><a id="__codelineno-11-20" name="__codelineno-11-20" href="#__codelineno-11-20"></a>name:<span class="w"> </span>CI
+</span><span id="__span-11-21"><a id="__codelineno-11-21" name="__codelineno-11-21" href="#__codelineno-11-21"></a>on:<span class="w"> </span><span class="o">[</span>push,<span class="w"> </span>pull_request<span class="o">]</span>
+</span><span id="__span-11-22"><a id="__codelineno-11-22" name="__codelineno-11-22" href="#__codelineno-11-22"></a>jobs:
+</span><span id="__span-11-23"><a id="__codelineno-11-23" name="__codelineno-11-23" href="#__codelineno-11-23"></a><span class="w">  </span>test:
+</span><span id="__span-11-24"><a id="__codelineno-11-24" name="__codelineno-11-24" href="#__codelineno-11-24"></a><span class="w">    </span>runs-on:<span class="w"> </span>ubuntu-latest
+</span><span id="__span-11-25"><a id="__codelineno-11-25" name="__codelineno-11-25" href="#__codelineno-11-25"></a><span class="w">    </span>steps:
+</span><span id="__span-11-26"><a id="__codelineno-11-26" name="__codelineno-11-26" href="#__codelineno-11-26"></a><span class="w">      </span>-<span class="w"> </span>uses:<span class="w"> </span>actions/checkout@v2
+</span><span id="__span-11-27"><a id="__codelineno-11-27" name="__codelineno-11-27" href="#__codelineno-11-27"></a><span class="w">      </span>-<span class="w"> </span>name:<span class="w"> </span>Run<span class="w"> </span>checks
+</span><span id="__span-11-28"><a id="__codelineno-11-28" name="__codelineno-11-28" href="#__codelineno-11-28"></a><span class="w">        </span>run:<span class="w"> </span><span class="p">|</span>
+</span><span id="__span-11-29"><a id="__codelineno-11-29" name="__codelineno-11-29" href="#__codelineno-11-29"></a><span class="w">          </span>uv<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>-e<span class="w"> </span><span class="s2">&quot;.[test]&quot;</span>
+</span><span id="__span-11-30"><a id="__codelineno-11-30" name="__codelineno-11-30" href="#__codelineno-11-30"></a><span class="w">          </span>pytest
+</span><span id="__span-11-31"><a id="__codelineno-11-31" name="__codelineno-11-31" href="#__codelineno-11-31"></a><span class="w">          </span>ruff<span class="w"> </span>check
+</span><span id="__span-11-32"><a id="__codelineno-11-32" name="__codelineno-11-32" href="#__codelineno-11-32"></a><span class="w">          </span>ruff<span class="w"> </span>format<span class="w"> </span>--check
+</span><span id="__span-11-33"><a id="__codelineno-11-33" name="__codelineno-11-33" href="#__codelineno-11-33"></a><span class="w">          </span>mypy<span class="w"> </span>.
+</span></code></pre></div></p>
+<h2 id="6-security-and-data-management">6. Security and Data Management</h2>
+<h3 id="sensitive-data">Sensitive Data</h3>
+<p>Never commit sensitive data or credentials. Use environment variables for secrets and add sensitive file patterns to .gitignore. For research data that can't be public, use Git-crypt or similar tools to encrypt specific files.</p>
+<h3 id="access-control">Access Control</h3>
+<p>Configure branch protection on main to require reviews and passing tests before merging. This prevents accidental changes to your stable code. For private repositories, carefully manage team access levels and regularly audit who has access.</p>
+<h2 id="7-best-practices">7. Best Practices</h2>
+<h3 id="for-research-projects">For Research Projects</h3>
+<p>Write clear commit messages explaining what changed and why. Include enough detail to understand the experiment parameters and key results. Tag important states of your analysis for easy reference later.</p>
+<p>Keep your analysis reproducible by managing dependencies carefully. Use virtual environments and record exact package versions. Document setup steps clearly in your README.</p>
+<h3 id="for-python-packages_1">For Python Packages</h3>
+<p>Follow semantic versioning for releases. Major version changes (1.0 to 2.0) indicate breaking changes, minor versions (1.1 to 1.2) add features, and patches (1.1.1 to 1.1.2) fix bugs.</p>
+<p>Write comprehensive tests and maintain good documentation. Set up automated builds to catch issues early. Keep a detailed changelog to help users understand what's changed between versions.</p>
+<h2 id="8-common-mistakes-to-avoid">8. Common Mistakes to Avoid</h2>
+<p>Committing large data files directly to Git will bloat your repository. Instead, use Git LFS or external data storage. Store only processed, minimal datasets in Git when necessary.</p>
+<p>Don't make huge, sweeping changes in a single commit. Break work into logical, reviewable chunks. Each commit should be focused and self-contained.</p>
+<p>Avoid committing temporary files, build artifacts, or environment-specific settings. Keep your repository clean and focused on source code and essential documentation.</p>
+<h2 id="9-additional-resources">9. Additional Resources</h2>
+<p>The <a href="https://the-turing-way.netlify.app/">Turing Way</a> provides excellent guidance for reproducible research. For Python packaging, the <a href="https://packaging.python.org">Python Packaging User Guide</a> is the authoritative resource.</p>
+<p>Learn more about Git with <a href="https://git-scm.com/book/en/v2">Pro Git</a> and <a href="https://docs.github.com">GitHub's documentation</a>. For research-specific workflows, check out <a href="https://milesmcbain.github.io/git_4_sci/">Git for Scientists</a>.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["content.code.copy"], "search": "../../assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.f1b6f286.min.js"></script>
+      
+    
+  </body>
+</html>
