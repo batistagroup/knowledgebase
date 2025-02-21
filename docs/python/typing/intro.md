@@ -289,7 +289,7 @@ def get_user_ids() -> list[int]:
 
 ## Configuring mypy
 
-Enabling an automatic type checker for your codebase is quite easy. Simply `uv add mypy` in your [venv](/docs/python/essential-tools.md), and then you can run `mypy .`. Once your codebase satisfies basic rules (checked by `mypy .` call), you can try & run `mypy --strict .`.
+Enabling an automatic type checker for your codebase is quite easy. Simply `uv add mypy` in your [venv](/docs/python/essential-tools.md), and then you can run `mypy .`. Once your codebase satisfies basic rules (checked by `mypy .` call), you can try & run `mypy --strict .`. Mypy can also be added as a [pre-commit hook](/docs/git/pre-commit.md).
 
 You can also update your `pyproject.toml` (alredy done in [python-template](https://github.com/batistagroup/python-template/)) to have strict enabled by default.
 
