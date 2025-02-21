@@ -301,6 +301,8 @@ ignore_missing_imports = true          # so that it doesn't complain about types
 disable_error_code = ["unused-ignore"]
 ```
 
+If you start introducing types to your existing codebase, you might get quite discourage by the seeming amount of effort to fix 100s of mypy strict errors. I can only say that I personally went through that experience twice, after which I could write new code with type hints present by default, which made my code better and more reliable.
+
 ## Summary
 
 Type hints are a powerful tool for improving code clarity, reducing bugs, and ensuring robust software development. Whether you're working on a small script or a large-scale project, leveraging Python's type system can significantly enhance your development process.

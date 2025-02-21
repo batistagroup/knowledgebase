@@ -1,130 +1,284 @@
-# Introduction
+# The Art of Testing Python Code
 
-This guide introduces best practices for testing scientific Python code using the `pytest` framework. We'll cover various testing strategies, focusing on writing clear, concise, and maintainable tests.
+Testing transforms your code from a fragile house of cards into a robust, maintainable fortress by systematically validating its behavior and documenting its intent.
 
-## Why Test Scientific Code?
+Admittedly, testing is not something I've fully embraced, I don't have (yet) a single codebase that has 90+% test coverage; however, the more I've worked on projects where more than one person writes the code, the more I understand their necessity. At the end of the day, just like with [typing](/python/typing/intro/#configuring-mypy), it's something you need to force yourself to do once, and after that it will become a natural part of coding.
 
-Testing is crucial for ensuring the correctness, reliability, and reproducibility of scientific computations. Scientific code often involves complex algorithms, numerical methods, and data processing pipelines, making thorough testing essential to avoid errors and ensure confidence in the results. Benefits include:
+## Testing in the wild
 
-1. **Early Error Detection:** Catch bugs early in the development process, preventing them from propagating into larger issues.
-1. **Improved Code Quality:** Writing tests forces you to think critically about your code's design and functionality, leading to more robust and maintainable code.
-1. **Reproducibility:** Tests provide a documented record of your code's behavior, making it easier to reproduce results and verify the correctness of future modifications.
-1. **Regression Prevention:** Tests act as a safety net, preventing regressions (the reintroduction of previously fixed bugs) when making changes to your code.
-1. **Collaboration:** Well-written tests facilitate collaboration by providing a clear understanding of the code's expected behavior.
+Testing is pretty much an unquestionable industry standard. Any codebase that will be reused strives to have code coverage of at least 90% (meaning that 90% of lines of code have a test case explicitly testing them).
 
-## Testing Strategies
+Perhaps the most famous example of a well tested codebase is [SQLite](https://www.sqlite.org/index.html), a SQL based db used by Adobe, Google (Android and Chrome), Apple (iOS), Dropbox, and many other giants. SQLite library contains 155 800 lines of source code in C (excluding blanks and comments). The test suite for SQLite has 92 053 100 lines of code, i.e. 590 lines of testing for every line of code.
 
-### 1. Unit Tests
+> The reliability and robustness of SQLite is achieved in part by thorough and careful testing.[[source]](https://www.sqlite.org/testing.html)
 
-Unit tests focus on testing individual components (functions, classes, modules) of your code in isolation. This allows you to pinpoint the source of errors more easily.
+Python code can be tested using pytest library. The rest of this page documents basic use.
 
-```python
-# src/package/utils/functions.py
-def add(x, y):
-    return x + y
+## Prerequisites
+
+- Python 3.7+
+- Understanding of Python functions and classes
+
+```bash
+source .venv/bin/activate
+uv add pytest typing-extensions mypy
 ```
 
-```python
-# tests/test_functions.py
-import pytest
-from package.utils.functions import add
+## Testing Fundamentals
 
+### 1. Unit Tests: The Foundation
 
-def test_add():
-    assert add(2, 3) == 5
-    assert add(-1, 1) == 0
-    assert add(0, 0) == 0
-```
-
-### 2. Integration Tests
-
-Integration tests verify the interaction between different components of your code. They ensure that the components work together correctly as a system.
+Unit tests validate individual components in isolation. They are your first line of defense.
 
 ```python
-# src/package/utils/other_functions.py
-def subtract(x, y):
-    return x - y
+from typing import Any
+from decimal import Decimal
+
+
+class PricingEngine:
+    """Handles product pricing calculations."""
+
+    def calculate_discount(self, price: Decimal, percentage: Decimal) -> Decimal:
+        """Calculate discounted price.
+
+        Args:
+            price: Original price
+            percentage: Discount percentage (0-100)
+
+        Returns:
+            Discounted price
+
+        Raises:
+            ValueError: If percentage is not between 0 and 100
+        """
+        if not 0 <= percentage <= 100:
+            raise ValueError("Percentage must be between 0 and 100")
+        return price * (1 - percentage / 100)
+
+
+def test_pricing_engine() -> None:
+    """Demonstrate comprehensive unit testing."""
+    engine = PricingEngine()
+
+    # Happy path
+    assert engine.calculate_discount(Decimal("100.00"), Decimal("20.00")) == Decimal(
+        "80.00"
+    )
+
+    # Edge cases
+    assert engine.calculate_discount(Decimal("100.00"), Decimal("0.00")) == Decimal(
+        "100.00"
+    )
+    assert engine.calculate_discount(Decimal("100.00"), Decimal("100.00")) == Decimal(
+        "0.00"
+    )
+
+    # Error cases
+    try:
+        engine.calculate_discount(Decimal("100.00"), Decimal("101.00"))
+        assert False, "Should raise ValueError"
+    except ValueError as e:
+        assert str(e) == "Percentage must be between 0 and 100"
 ```
+
+### 2. Integration Tests: Component Harmony
+
+Integration tests verify that components work together correctly. They catch interface mismatches and data flow issues.
 
 ```python
-# tests/test_integration.py
-import pytest
-from package.utils.functions import add
-from package.utils.other_functions import subtract
+from typing import Optional
+from dataclasses import dataclass
+from decimal import Decimal
 
 
-def test_integration():
-    # test add and subtract
-    assert add(subtract(5, 3), 2) == 4
+@dataclass
+class Product:
+    id: str
+    name: str
+    price: Decimal
+
+
+class ProductDatabase:
+    def __init__(self) -> None:
+        self._products: dict[str, Product] = {}
+
+    def add(self, product: Product) -> None:
+        self._products[product.id] = product
+
+    def get(self, product_id: str) -> Optional[Product]:
+        return self._products.get(product_id)
+
+
+class PricingService:
+    def __init__(self, db: ProductDatabase, engine: PricingEngine) -> None:
+        self.db = db
+        self.engine = engine
+
+    def apply_discount(self, product_id: str, discount: Decimal) -> Optional[Product]:
+        """Apply discount to product price.
+
+        Args:
+            product_id: Product identifier
+            discount: Discount percentage
+
+        Returns:
+            Updated product or None if not found
+        """
+        product = self.db.get(product_id)
+        if not product:
+            return None
+
+        discounted_price = self.engine.calculate_discount(product.price, discount)
+        return Product(product.id, product.name, discounted_price)
+
+
+def test_pricing_service_integration() -> None:
+    """Demonstrate integration testing."""
+    # Setup components
+    db = ProductDatabase()
+    engine = PricingEngine()
+    service = PricingService(db, engine)
+
+    # Prepare test data
+    original_product = Product("PROD1", "Test Product", Decimal("100.00"))
+    db.add(original_product)
+
+    # Test integrated flow
+    discounted_product = service.apply_discount("PROD1", Decimal("20.00"))
+    assert discounted_product is not None
+    assert discounted_product.price == Decimal("80.00")
+
+    # Test error handling
+    assert service.apply_discount("NONEXISTENT", Decimal("20.00")) is None
 ```
 
-### 3. End-to-End Tests
+### 3. Functional Tests: User Perspective
 
-End-to-end tests verify the entire system flow from start to finish. They are useful for testing complex interactions and ensuring that all components work together correctly.
-
-### 4. Regression Tests
-
-Regression tests are designed to prevent the reintroduction of previously fixed bugs. They are typically run after making changes to the codebase to ensure that existing functionality remains intact. Best practice dictates incorporating edge cases discovered during testing into existing unit tests, rather than creating entirely separate regression test suites. This keeps the test suite concise and maintainable.
-
-### 5. Performance Tests
-
-Performance tests measure the speed and efficiency of the system. They are useful for identifying performance bottlenecks and ensuring that the system meets performance requirements.
-
-## Best Practices for Multi-Case Testing with `@pytest.mark.parametrize`
-
-The `@pytest.mark.parametrize` decorator is a powerful tool in `pytest` for writing concise and readable multi-case tests. It allows you to run the same test function with different inputs and expected outputs.
-
-Let's say we have a function that calculates the square of a number:
+Functional tests validate complete features from a user's perspective. They ensure the system works as a whole.
 
 ```python
-def square(x):
-    return x * x
+from fastapi import FastAPI, HTTPException
+from fastapi.testclient import TestClient
+from decimal import Decimal
+from typing import Dict, Any
+
+app = FastAPI()
+db = ProductDatabase()
+engine = PricingEngine()
+service = PricingService(db, engine)
+
+
+@app.post("/products/{product_id}/discount")
+async def apply_discount(
+    product_id: str, discount_percentage: Decimal
+) -> Dict[str, Any]:
+    """Apply discount to product."""
+    result = service.apply_discount(product_id, discount_percentage)
+    if not result:
+        raise HTTPException(status_code=404, detail="Product not found")
+    return {
+        "id": result.id,
+        "name": result.name,
+        "original_price": str(result.price),
+        "discount_percentage": str(discount_percentage),
+        "final_price": str(result.price),
+    }
+
+
+def test_discount_api() -> None:
+    """Demonstrate functional testing of the API."""
+    client = TestClient(app)
+
+    # Setup test data
+    db.add(Product("PROD1", "Test Product", Decimal("100.00")))
+
+    # Test successful discount
+    response = client.post("/products/PROD1/discount?discount_percentage=20.0")
+    assert response.status_code == 200
+    data = response.json()
+    assert data["final_price"] == "80.00"
+
+    # Test error handling
+    response = client.post("/products/NONEXISTENT/discount?discount_percentage=20.0")
+    assert response.status_code == 404
 ```
 
-We can test this function with multiple inputs using `@pytest.mark.parametrize`:
+## Testing Best Practices
 
-```python
-import pytest
+1. Test Organization
+
+    - One test file per source file
+    - Group related tests in classes
+    - Name tests descriptively
+
+1. Test Coverage
+
+    - Happy path: Normal operation
+    - Edge cases: Boundary conditions
+    - Error cases: Expected failures
+    - Security: Input validation
+
+1. Performance
+
+    - Use appropriate test scopes
+    - Mock expensive operations
+    - Parallelize test execution
+
+## Common Pitfalls
+
+1. Incomplete Testing
+
+    ```python
+    # BAD: Only testing happy path
+    def test_incomplete():
+        assert calculate_discount(100, 20) == 80
 
 
-def square(x):
-    return x * x
+    # GOOD: Testing all scenarios
+    def test_complete():
+        assert calculate_discount(100, 20) == 80  # Happy path
+        assert calculate_discount(100, 0) == 100  # Edge case
+        with pytest.raises(ValueError):  # Error case
+            calculate_discount(100, -1)
+    ```
+
+1. Brittle Tests
+
+    ```python
+    # BAD: Testing implementation details
+    def test_brittle(mocker):
+        mocker.spy(service, "_internal_calculation")
+        service.process()
+        assert service._internal_calculation.called
 
 
-TEST_CASES_SQUARE = [
-    (1, 1, "Positive integer"),
-    (0, 0, "Zero"),
-    (-2, 4, "Negative integer"),
-    (3.14, 9.8596, "Float"),
-]
+    # GOOD: Testing observable behavior
+    def test_robust():
+        result = service.process()
+        assert result.status == "success"
+    ```
+
+1. Poor Isolation
+
+    ```python
+    # BAD: Shared state between tests
+    total = 0
 
 
-@pytest.mark.parametrize(
-    "input, expected, description",
-    [(tc[0], tc[1], tc[2]) for tc in TEST_CASES_SQUARE],
-)
-def test_square(input, expected, description):
-    assert square(input) == pytest.approx(expected)
-```
+    def test_shared_state1():
+        global total
+        total += 1
+        assert total == 1
 
-This approach is significantly more efficient and readable than writing separate test functions for each case. The `pytest.approx` function handles floating-point comparisons, accounting for potential rounding errors. Including a description for each test case improves readability and maintainability.
 
-## Tools and Techniques
+    # GOOD: Isolated tests
+    def test_isolated1():
+        calculator = Calculator()
+        assert calculator.add(1) == 1
+    ```
 
-- **`pytest`:** A powerful and flexible testing framework for Python. To run all tests, use `pytest`. For verbose output, use `pytest -v`. To run tests in a specific file, use `pytest tests/test_file.py`. You can also specify individual test functions or classes using the `-k` option (e.g., `pytest -k "test_function"`). `pytest` automatically discovers tests based on naming conventions (files starting with `test_` or classes/functions containing `test` in their names).
-- **`pytest-cov`:** A pytest plugin that generates code coverage reports. Install `pytest-cov` and run it with `pytest --cov=.`.
-- **`hypothesis`:** A library for property-based testing, enabling you to test a wide range of inputs automatically.
+## Resources
 
-## Best Practices
-
-1. **Write Tests First (Test-Driven Development):** Before writing the actual function, consider writing the tests first. This approach, known as Test-Driven Development (TDD), helps clarify requirements and ensures that your code meets its intended purpose.
-1. **Write Clear and Concise Tests:** Tests should be easy to understand and maintain.
-1. **Test Edge Cases:** Pay attention to boundary conditions and potential error scenarios.
-1. **Use Descriptive Test Names:** Test names should clearly indicate what is being tested.
-1. **Keep Tests Independent:** Tests should not depend on each other.
-1. **Use Assertions Effectively:** Use assertions to clearly state the expected behavior of your code.
-1. **Aim for High Code Coverage:** Strive for high code coverage to ensure that most parts of your code are tested.
-
-## Conclusion
-
-Testing is an integral part of developing robust and reliable scientific code. By adopting the best practices outlined in this guide and utilizing tools like `pytest`, you can significantly improve the quality and reproducibility of your scientific computations.
+- [pytest Documentation](https://docs.pytest.org/)
+- [Testing Best Practices](https://docs.python-guide.org/writing/tests/)
+- [Property-Based Testing](https://hypothesis.works/)
