@@ -1,0 +1,57 @@
+---
+description: Writing documentation
+globs: *.md
+---
+# Writing Documentation Guidelines
+
+## Core Principles
+- Write concisely and purposefully - every word must earn its place
+- Ensure logical flow between sentences and sections
+- Build information progressively from fundamentals to advanced concepts
+- Use active voice and present tense
+- Include practical, production-ready examples
+
+## Document Structure
+
+1. Overview (What & Why)
+   - One-sentence description
+   - Purpose and value proposition
+   - Target audience and prerequisites
+
+2. Main Content
+   - Present information in logical sequence
+   - Use clear, hierarchical headings
+   - Include relevant code examples
+   - Break down complex concepts with diagrams or analogies
+   - Structure processes as numbered steps
+
+3. Summary
+   - Key takeaways
+   - Common pitfalls and solutions
+   - Related resources
+
+## Technical Standards
+- All code examples must:
+  - Follow language-specific style guides and conventions
+  - Include error handling and input validation
+  - Be security-conscious and production-ready
+  - Use current best practices and modern syntax
+  - Be properly typed and documented
+- Include version requirements and dependencies
+- Highlight performance considerations
+- Note any platform-specific requirements
+
+## Writing Style
+- Use short, declarative sentences
+- Define technical terms on first use
+- Format code, commands, and paths with backticks
+- Structure content with consistent heading hierarchy
+- Use lists for related items (lists should be indented by 4 spaces), tables for comparisons
+- Follow markdown linting rules
+
+## Quality Checklist
+- [ ] Clear purpose and scope
+- [ ] Logical information flow
+- [ ] Code examples follow best practices
+- [ ] Technical accuracy and completeness
+- [ ] Consistent formatting and terminology

@@ -26,7 +26,8 @@ jobs:
         echo "$PWD/.venv/bin" >> $GITHUB_PATH
 
     - name: Install dependencies
-      run: uv pip install -e .
+      run: |
+        uv pip install -e .
 
     - name: Run mdformat
       run: mdformat --check docs
