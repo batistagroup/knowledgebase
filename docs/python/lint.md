@@ -84,7 +84,7 @@ lint.select = ["E", "F", "UP", "B", "SIM", "I"]
 
 ### Integration with Development Tools
 
-See page on [pre-commits](/docs/git/pre-commit.md).
+See page on [pre-commits](../git/pre-commit.md).
 
 ## Ruff Formatting
 
@@ -174,7 +174,7 @@ Note the trailing comma after the last item in multi-line structures - this is a
 
 1. Run Ruff locally before committing changes
 1. Configure your IDE for automatic linting on save
-1. Use [pre-commit hooks](/docs/git/pre-commit.md) to enforce linting rules
+1. Use [pre-commit hooks](../git/pre-commit.md) to enforce linting rules
 1. Regularly update Ruff to get the latest rules and fixes
 
 ## Related Resources

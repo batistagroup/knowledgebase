@@ -2,7 +2,7 @@
 
 Testing transforms your code from a fragile house of cards into a robust, maintainable fortress by systematically validating its behavior and documenting its intent.
 
-Admittedly, testing is not something I've fully embraced, I don't have (yet) a single codebase that has 90+% test coverage; however, the more I've worked on projects where more than one person writes the code, the more I understand their necessity. At the end of the day, just like with [typing](/python/typing/intro/#configuring-mypy), it's something you need to force yourself to do once, and after that it will become a natural part of coding.
+Admittedly, testing is not something I've fully embraced, I don't have (yet) a single codebase that has 90+% test coverage; however, the more I've worked on projects where more than one person writes the code, the more I understand their necessity. At the end of the day, just like with [typing](../typing/intro.md#configuring-mypy), it's something you need to force yourself to do once, and after that it will become a natural part of coding.
 
 ## Testing in the wild
 
