@@ -1,8 +1,12 @@
 site_name: Batista Group Knowledgebase
+repo_url: https://github.com/batistagroup/knowledgebase
+repo_name: batistagroup/knowledgebase
+copyright: CC-BY 4.0 &copy; 2025 Batista Group
 theme:
   name: material
   features:
     - content.code.copy
+    - navigation.footer
     
 extra_css:
 - stylesheets/extra.css

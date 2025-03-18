@@ -1,6 +1,6 @@
 # Pre-commit Workflows
 
-After reading docs on [linting & formatting](/docs/python/lint.md) and [typing](/docs/python/typing/intro.md), your [committing](/docs/git/intro.md) workflow will look like:
+After reading docs on [linting & formatting](../python/lint.md) and [typing](../python/typing/intro.md), your [committing](../git/intro.md) workflow will look like:
 
 ```bash
 ruff check --fix

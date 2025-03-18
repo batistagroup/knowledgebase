@@ -4,7 +4,7 @@
 
 GitHub Workflows are automated processes that help you build, test, package, release, and deploy projects directly from your GitHub repository. They enable continuous integration and continuous deployment (CI/CD) through declarative YAML files stored in your `.github/workflows` directory.
 
-In the [intro to git](/git/intro/#3-branching-strategy), a recommended workflow was making all changes on separate branches, which are merged into master through a Pull Request that is reviewed by the team. Workflows allows to automate many of the check the team might want to perform. For example, you'd want to know: is the code properly [linted & formatted](/docs/python/lint.md)? Is it [type annotated](/docs/python/typing/intro.md)? Does it pass all [test cases](/docs/python/tests/intro.md)? Because even if you recommend people to use [pre-commit hooks](/docs/git/pre-commit.md), there's no guarantee that they're actually used. So you could have workflows to answer all of the questions above.
+In the [intro to git](./intro.md#3-branching-strategy), a recommended workflow was making all changes on separate branches, which are merged into master through a Pull Request that is reviewed by the team. Workflows allows to automate many of the check the team might want to perform. For example, you'd want to know: is the code properly [linted & formatted](../python/lint.md)? Is it [type annotated](../python/typing/intro.md)? Does it pass all [test cases](../python/tests/intro.md)? Because even if you recommend people to use [pre-commit hooks](../git/pre-commit.md), there's no guarantee that they're actually used. So you could have workflows to answer all of the questions above.
 
 ## Prerequisites
 
@@ -86,7 +86,7 @@ categories:                               # Organizes changes by category
 1. **Version Resolution** ([.github/workflows/release-drafter.yml](https://github.com/batistagroup/python-template/blob/master/.github/workflows/release-drafter.yml)):
     The workflow employs a semantic versioning strategy based on PR labels. Major version bumps are triggered by breaking changes, minor versions by new features in areas like quantum mechanics or tutorials, and patch versions by maintenance updates. If no specific version label is present, the system defaults to a patch version increment.
 
-When a PR is opened or updated, the workflow analyzes commit messages for keywords, automatically assigns corresponding labels, uses these labels to categorize changes in the release draft, and updates the version number based on the labels' significance. For instance, a PR with commit message "feat(quantum): Add new QM simulation" would be labeled as "quantum-mechanics", appear under "Core Science" in the changelog, trigger a minor version bump, and be formatted as "- Add new QM simulation @author (#123)". To see existing labels for the knowledgebase repo, see [labels doc](/docs/labels.md).
+When a PR is opened or updated, the workflow analyzes commit messages for keywords, automatically assigns corresponding labels, uses these labels to categorize changes in the release draft, and updates the version number based on the labels' significance. For instance, a PR with commit message "feat(quantum): Add new QM simulation" would be labeled as "quantum-mechanics", appear under "Core Science" in the changelog, trigger a minor version bump, and be formatted as "- Add new QM simulation @author (#123)". To see existing labels for the knowledgebase repo, see [labels doc](../labels.md).
 
 ### Update Major Minor Tags
 
