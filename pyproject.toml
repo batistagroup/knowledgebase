@@ -13,4 +13,5 @@ dependencies = [
     "mdformat-black>=0.1.1",
     "mdformat-mkdocs[recommended]>=4.1.2",
     "mkdocs-awesome-nav>=3.0.0",
+    "material-plausible-plugin>=0.3.0",
 ]
