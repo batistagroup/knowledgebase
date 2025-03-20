@@ -7,13 +7,14 @@ theme:
   features:
     - content.code.copy
     - navigation.footer
-    
+
 extra_css:
-- stylesheets/extra.css
+  - stylesheets/extra.css
 
 plugins:
-- search
-- awesome-nav
+  - search
+  - awesome-nav
+  - material-plausible
 
 markdown_extensions:
   - pymdownx.highlight:
@@ -29,3 +30,30 @@ markdown_extensions:
 
   - admonition
   - pymdownx.details
+
+extra:
+  analytics:
+    provider: plausible
+    domain: knowledgebase.batistalab.com
+
+    # : If using custom domain proxy or self-hosting Plausible,
+    # : uncomment and specify script path here:
+    src: "https://analytics.batistalab.com/js/script.js"
+
+    # : If you’re using the privacy plugin or hosting the script
+    # : on another domain, uncomment and specify API path here:
+    # api: "https://analytics.batistalab.com/api/event"
+    feedback:
+      title: Was this page helpful?
+      ratings:
+        - icon: material/emoticon-happy-outline
+          name: This page was helpful
+          data: good
+          note: >-
+            Thanks for your feedback!
+
+        - icon: material/emoticon-sad-outline
+          name: This page could be improved
+          data: bad
+          note: >-
+            Thanks for your feedback!
