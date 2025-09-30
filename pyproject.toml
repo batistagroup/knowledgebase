@@ -7,11 +7,6 @@ requires-python = ">=3.12"
 dependencies = [
     "mkdocs-material>=9.6.4",
     "mkdocs>=1.6.1",
-    "pre-commit>=4.1.0",
-    "mdformat-gfm>=0.4.1",
-    "mdformat-tables>=1.0.0",
-    "mdformat-black>=0.1.1",
-    "mdformat-mkdocs[recommended]>=4.1.2",
     "mkdocs-awesome-nav>=3.0.0",
     "material-plausible-plugin>=0.3.0",
 ]
