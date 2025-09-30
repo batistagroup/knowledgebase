@@ -1,24 +1,14 @@
 html {
-  font-size: 18px;
-}
+    font-size: 18px;
+  }
 
-
+  
 h1 {
-font-weight: 600 !important;
-color: #333 !important;
-}
-
-[data-md-color-scheme="slate"] h1 {
-font-weight: 600 !important;
-color: #d7d7d7 !important;
+  font-weight: 600 !important;
+  color: #333 !important;
 }
 
 h2 {
-font-weight: 600 !important;
-color: #333 !important;
-}
-
-[data-md-color-scheme="slate"] h2 {
-font-weight: 600 !important;
-color: #d7d7d7 !important;
+  font-weight: 600 !important;
+  color: #333 !important;
 }
