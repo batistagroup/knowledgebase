@@ -93,13 +93,7 @@ Perhaps one of the first effects of ruff you'll notice is that it'll break long 
 ```python
 # Example 1: Complex Boolean Logic
 # Bad - Hard to understand the logic and spot errors
-if (
-    user.is_active
-    and user.email_verified
-    and (user.role == "admin" or user.role == "moderator")
-    and user.has_permission("edit_posts")
-    and not user.is_banned
-):
+if user.is_active and user.email_verified and (user.role == "admin" or user.role == "moderator") and user.has_permission("edit_posts") and not user.is_banned:
     allow_access()
 
 # Good - Logic is clear and errors are easy to spot
@@ -116,14 +110,7 @@ if (
 # Bad - Exception types are hard to read and modify
 try:
     process_data()
-except (
-    ValueError,
-    TypeError,
-    KeyError,
-    DatabaseError,
-    NetworkTimeout,
-    ValidationError,
-) as e:
+except (ValueError, TypeError, KeyError, DatabaseError, NetworkTimeout, ValidationError) as e:
     log_error(e)
 
 # Good - Each exception is clear and git diffs will show exactly what changed
@@ -141,14 +128,7 @@ except (
 
 # Example 3: Function Calls with Named Parameters
 # Bad - Parameter names and values are hard to scan
-create_user(
-    username="johndoe",
-    email="john@example.com",
-    role="admin",
-    department="engineering",
-    active=True,
-    send_welcome_email=True,
-)
+create_user(username="johndoe", email="john@example.com", role="admin", department="engineering", active=True, send_welcome_email=True)
 
 # Good - Each parameter is clearly visible and self-documenting
 create_user(
