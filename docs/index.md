@@ -17,4 +17,6 @@ Our group maintains several open-source projects and research tools on GitHub. Y
 ### Links to our projects
 
 1. [DirectMultiStep](https://dms.batistalab.com) - Direct Route Generation for Multi-Step Retrosynthesis.
+1. [FragmentRetro](https://fragment.batistalab.com) - A Quadratic Retrosynthetic Method Based on Fragmentation Algorithms
+1. [QFlux](https://qflux.batistalab.com) - QFlux: An Open-Source Toolkit for Quantum Dynamics Simulations on Quantum Computers
 1. [Models UI](https://models.batistalab.com) - a website to run some of our ML models directly from browser
