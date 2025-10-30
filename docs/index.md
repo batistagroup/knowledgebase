@@ -1,6 +1,6 @@
-# Batista Group Knowledgebase
+# Batista Group Tutorials
 
-Welcome to the internal knowledgebase for the Batista Group at Yale University. This resource serves as a centralized repository of information, protocols, and documentation for group members.
+Welcome to the internal knowledgebase for the Batista Group at Yale University. This resource serves as a centralized repository of information, protocols, tutorials, and documentation for group members.
 
 ## About Us
 
