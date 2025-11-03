@@ -2,4 +2,5 @@ nav:
   - index.md
   - git/
   - python/
+  - quantum-chemistry/
   - labels.md
